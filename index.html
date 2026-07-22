@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Desafío Premium</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter, sans-serif;
+}
+
+body{
+  background: radial-gradient(circle at top, #1a1a1a, #000);
+  color:#fff;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.container{
+  width:100%;
+  max-width:420px;
+}
+
+.card{
+  background: rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px;
+  padding:25px;
+  text-align:center;
+  backdrop-filter: blur(10px);
+  box-shadow:0 0 25px rgba(0,0,0,0.6);
+}
+
+h1,h2{
+  margin-bottom:12px;
+}
+
+h1{
+  font-size:24px;
+  color:#f5c542;
+}
+
+p{
+  color:#ccc;
+  font-size:15px;
+  margin-bottom:20px;
+}
+
+.btn{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:14px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.btn-primary{
+  background: linear-gradient(135deg,#f5c542,#d4a514);
+  color:#111;
+}
+
+.btn-primary:hover{
+  transform:scale(1.03);
+}
+
+.btn-wa{
+  background:#25D366;
+  color:#fff;
+}
+
+.hidden{
+  display:none;
+}
+
+.boxes{
+  display:flex;
+  justify-content:space-between;
+  margin-top:20px;
+  gap:10px;
+}
+
+.box{
+  flex:1;
+  height:90px;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.box:hover{
+  transform:scale(1.05);
+  border-color:#f5c542;
+}
+
+.fade{
+  animation:fade 0.4s ease-in-out;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.success{
+  font-size:50px;
+  margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- INICIO -->
+  <div id="home" class="card fade">
+    <h1>🎁 Desafío Premium</h1>
+    <p>Selecciona una de las cajas y descubre tu acceso disponible.</p>
+    <button class="btn btn-primary" onclick="start()">Comenzar</button>
+  </div>
+
+  <!-- JUEGO -->
+  <div id="game" class="card hidden fade">
+    <h2>Elige una caja</h2>
+    <p>Toca una para continuar</p>
+
+    <div class="boxes">
+      <div class="box" onclick="win()">🎁</div>
+      <div class="box" onclick="win()">🎁</div>
+      <div class="box" onclick="win()">🎁</div>
+    </div>
+  </div>
+
+  <!-- RESULTADO -->
+  <div id="result" class="card hidden fade">
+    <div class="success">🎉</div>
+    <h2>¡Felicitaciones!</h2>
+    <p>Tu acceso está listo para continuar por WhatsApp.</p>
+
+    <a class="btn btn-wa"
+       href="https://wa.me/549XXXXXXXXXX?text=Hola%2C%20quiero%20continuar"
+       target="_blank">
+       Ir a WhatsApp
+    </a>
+  </div>
+
+</div>
+
+<script>
+function start(){
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("game").classList.remove("hidden");
+}
+
+function win(){
+  document.getElementById("game").classList.add("hidden");
+  document.getElementById("result").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
