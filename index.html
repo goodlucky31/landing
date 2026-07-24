@@ -122,7 +122,7 @@
     }
   </style>
 
-  <!-- Meta Pixel Code Base -->
+  <!-- Meta Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -133,12 +133,13 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    // ===============================================
-    // AQUÍ VA TU ID DE META PIXEL
-    // ===============================================
-    fbq('init', '966509206207147'); 
-    fbq('track', 'PageView'); // Evento automático al abrir la página
+    fbq('init', '1575363617572088');
+    fbq('track', 'PageView');
   </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1575363617572088&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -184,23 +185,21 @@
 
 <script>
   function irAWhatsApp() {
-    // 1. Disparar evento de conversión 'Lead' en Meta Pixel
+    // Disparar evento de conversión 'Lead'
     if (typeof fbq === 'function') {
       fbq('track', 'Lead', {
         content_name: 'Boton WhatsApp Directo'
       });
     }
 
-    // ===============================================
-    // AQUÍ VA TU NÚMERO DE TELÉFONO
-    // ===============================================
-    const numeroUnico = "5492236796929"; 
+    // Nuevo número de teléfono configurado
+    const numeroUnico = "5492236796945"; 
     
-    // Mensaje automático para el chat
+    // Mensaje automático
     const mensaje = "¡Hola! Quiero registrarme en Good Luck y reclamar mi bono del 100%.";
     const urlFinal = `https://wa.me/${numeroUnico}?text=${encodeURIComponent(mensaje)}`;
 
-    // Pequeño delay de 300ms para asegurar que el Pixel envíe el evento
+    // Espera de 300ms para asegurar el envío del evento antes de redireccionar
     setTimeout(function() {
       window.location.href = urlFinal;
     }, 300);
