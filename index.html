@@ -38,7 +38,7 @@
 
     h1 {
       margin: 0 0 6px 0;
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -46,62 +46,40 @@
     }
 
     .subtitle {
-      margin: 0 0 28px 0;
-      font-size: 13px;
-      font-weight: 600;
-      color: #ccaacc;
+      margin: 0 0 15px 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffcc00;
       letter-spacing: 0.8px;
       text-transform: uppercase;
     }
 
-    .input-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .input-field {
-      width: 100%;
-      box-sizing: border-box;
-      background: #3a3d45; 
-      border: 1px solid #555861;
-      border-radius: 8px;
-      padding: 14px;
-      font-size: 16px;
-      color: #ffffff;
-      text-align: center;
-      margin-bottom: 18px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .input-field:focus {
-      border-color: #ffcc00;
-    }
-
-    .input-field::placeholder {
-      color: #b0b3bc;
-      opacity: 1;
+    .description-text {
+      font-size: 14px;
+      color: #e0e0e0;
+      margin-bottom: 25px;
+      line-height: 1.4;
     }
 
     .btn-submit {
       width: 100%;
       background: linear-gradient(180deg, #00e676 0%, #00b34a 100%);
       border: none;
-      border-radius: 8px;
-      padding: 15px;
-      font-size: 17px;
-      font-weight: 700;
+      border-radius: 10px;
+      padding: 18px 10px;
+      font-size: 18px;
+      font-weight: 800;
       color: #ffffff;
       cursor: pointer;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      box-shadow: 0 4px 15px rgba(0, 230, 118, 0.35);
+      box-shadow: 0 4px 20px rgba(0, 230, 118, 0.45);
       transition: transform 0.1s, filter 0.2s;
       margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
     }
 
     .btn-submit:hover {
@@ -129,8 +107,8 @@
     }
 
     .feature-icon {
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 45px;
       margin-bottom: 8px;
     }
 
@@ -144,7 +122,7 @@
     }
   </style>
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel Code Base -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -154,22 +132,24 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '966509206207147');
-    fbq('track', 'PageView');
+    
+    // ===============================================
+    // AQUÍ VA TU ID DE META PIXEL
+    // ===============================================
+    fbq('init', '966509206207147'); 
+    fbq('track', 'PageView'); // Evento automático al abrir la página
   </script>
 </head>
 <body>
 
 <div class="card-container">
   <h1>Good Luck</h1>
-  <div class="subtitle">Accedé a tu bono del 100%</div>
+  <div class="subtitle">¡Bono del 100% de Regalo!</div>
   
-  <div class="input-label">Brindanos tu nombre para acceder a tu usuario:</div>
+  <p class="description-text">Toca el botón de abajo para comunicarte por WhatsApp, crear tu usuario y reclamar tu bono instantáneo.</p>
   
-  <input id="nombreCliente" class="input-field" type="text" placeholder="Escribí tu nombre aquí" required autocomplete="off">
-  
-  <button onclick="irAWhatsApp()" class="btn-submit">
-    Obtenlo Ahora
+  <button type="button" onclick="irAWhatsApp()" class="btn-submit">
+    <span>RECLAMAR BONO 100%</span>
   </button>
 
   <div class="features-container">
@@ -203,32 +183,28 @@
 </div>
 
 <script>
-function irAWhatsApp() {
-  const inputNombre = document.getElementById("nombreCliente");
-  const nombre = inputNombre.value.trim();
-  
-  if (nombre === "") {
-    alert("Por favor, completá el campo para continuar.");
-    inputNombre.focus();
-    return;
+  function irAWhatsApp() {
+    // 1. Disparar evento de conversión 'Lead' en Meta Pixel
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead', {
+        content_name: 'Boton WhatsApp Directo'
+      });
+    }
+
+    // ===============================================
+    // AQUÍ VA TU NÚMERO DE TELÉFONO
+    // ===============================================
+    const numeroUnico = "5492236796929"; 
+    
+    // Mensaje automático para el chat
+    const mensaje = "¡Hola! Quiero registrarme en Good Luck y reclamar mi bono del 100%.";
+    const urlFinal = `https://wa.me/${numeroUnico}?text=${encodeURIComponent(mensaje)}`;
+
+    // Pequeño delay de 300ms para asegurar que el Pixel envíe el evento
+    setTimeout(function() {
+      window.location.href = urlFinal;
+    }, 300);
   }
-
-  // Evento Lead para optimizar costos en Meta Ads
-  fbq('track', 'Lead', {
-    content_name: 'Registro Good Luck'
-  });
-
-  // Número principal asignado
-  const numeroUnico = "5492236796929"; 
-  const mensaje = `¡Hola! Mi nombre es: ${nombre}. Quiero registrarme en Good Luck y obtener mi bono del 100%.`;
-  
-  const urlFinal = `https://wa.me/${numeroUnico}?text=${encodeURIComponent(mensaje)}`;
-
-  // Delay para que se envíe el evento de Meta antes de salir
-  setTimeout(function(){
-    window.location.href = urlFinal;
-  }, 400);
-}
 </script>
 
 </body>
