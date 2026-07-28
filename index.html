@@ -184,19 +184,54 @@
 </div>
 
 <script>
+  // Funciones auxiliares para leer cookies y parámetros de la URL
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
   function irAWhatsApp() {
-    // Disparar evento de conversión 'Lead'
+    // 1. Capturar identificadores de Meta en el momento del clic
+    const fbp = getCookie('_fbp') || '';
+    const fbclid = getQueryParam('fbclid');
+    let fbc = '';
+    
+    if (fbclid) {
+      const creationTime = Math.floor(Date.now() / 1000);
+      fbc = `fb.1.${creationTime}.${fbclid}`;
+    }
+
+    // 2. Guardarlos localmente por si los necesitas registrar luego en tu base de datos
+    if (fbp) localStorage.setItem('meta_fbp', fbp);
+    if (fbc) localStorage.setItem('meta_fbc', fbc);
+
+    // 3. Disparar evento de conversión 'Lead' en el Píxel
     if (typeof fbq === 'function') {
       fbq('track', 'Lead', {
-        content_name: 'Boton WhatsApp Directo'
+        content_name: 'Boton WhatsApp Directo',
+        fbp: fbp,
+        fbc: fbc
       });
     }
 
-    // Nuevo número de teléfono configurado
+    // 4. Nuevo número de teléfono configurado
     const numeroUnico = "5492236796945"; 
     
-    // Mensaje automático
-    const mensaje = "¡Hola! Quiero registrarme en Good Luck y reclamar mi bono del 100%.";
+    // 5. Mensaje automático incluyendo de forma invisible o visible el ID (opcional para el operador)
+    // Esto ayuda a que el operador sepa de qué sesión viene si el usuario manda el mensaje tal cual
+    let mensaje = "¡Hola! Quiero registrarme en Good Luck y reclamar mi bono del 100%.";
+    
+    // Si quieres que el ID viaje adjunto en el texto del chat para que lo guardes manualmente o con bot:
+    if (fbp) {
+      mensaje += ` [Ref: ${fbp}]`;
+    }
+
     const urlFinal = `https://wa.me/${numeroUnico}?text=${encodeURIComponent(mensaje)}`;
 
     // Espera de 300ms para asegurar el envío del evento antes de redireccionar
