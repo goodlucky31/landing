@@ -211,23 +211,23 @@
     if (fbp) localStorage.setItem('meta_fbp', fbp);
     if (fbc) localStorage.setItem('meta_fbc', fbc);
 
-    // 3. Disparar evento de conversión 'Lead' en el Píxel
+    // 3. Disparar evento de conversión 'Lead' con divisa y valor en 0 (soluciona advertencia de Meta)
     if (typeof fbq === 'function') {
       fbq('track', 'Lead', {
         content_name: 'Boton WhatsApp Directo',
+        currency: 'ARS',
+        value: 0.00,
         fbp: fbp,
         fbc: fbc
       });
     }
 
-    // 4. Nuevo número de teléfono configurado
+    // 4. Número de teléfono configurado
     const numeroUnico = "5492236796945"; 
     
-    // 5. Mensaje automático incluyendo de forma invisible o visible el ID (opcional para el operador)
-    // Esto ayuda a que el operador sepa de qué sesión viene si el usuario manda el mensaje tal cual
+    // 5. Mensaje automático
     let mensaje = "¡Hola! Quiero registrarme en Good Luck y reclamar mi bono del 100%.";
     
-    // Si quieres que el ID viaje adjunto en el texto del chat para que lo guardes manualmente o con bot:
     if (fbp) {
       mensaje += ` [Ref: ${fbp}]`;
     }
