@@ -134,7 +134,7 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     
     fbq('init', '1536789920782732');
-    fbq('track', 'PageView', {}, { test_event_code: 'TEST54282' });
+    fbq('track', 'PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1536789920782732&ev=PageView&noscript=1"/>
@@ -211,7 +211,7 @@
     if (fbp) localStorage.setItem('meta_fbp', fbp);
     if (fbc) localStorage.setItem('meta_fbc', fbc);
 
-    // 3. Disparar evento de conversión 'Lead' con divisa, valor en 0 y el test_event_code activo
+    // 3. Disparar evento de conversión 'Lead' limpio (sin código de prueba)
     if (typeof fbq === 'function') {
       fbq('track', 'Lead', {
         content_name: 'Boton WhatsApp Directo',
@@ -219,8 +219,6 @@
         value: 0.00,
         fbp: fbp,
         fbc: fbc
-      }, {
-        test_event_code: 'TEST54282'
       });
     }
 
