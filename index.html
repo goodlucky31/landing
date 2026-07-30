@@ -184,7 +184,6 @@
 </div>
 
 <script>
-  // Funciones auxiliares para leer cookies y parámetros de la URL
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -197,7 +196,6 @@
   }
 
   function irAWhatsApp() {
-    // 1. Capturar identificadores de Meta en el momento del clic
     const fbp = getCookie('_fbp') || '';
     const fbclid = getQueryParam('fbclid');
     let fbc = '';
@@ -207,11 +205,10 @@
       fbc = `fb.1.${creationTime}.${fbclid}`;
     }
 
-    // 2. Guardarlos localmente por si los necesitas registrar luego en tu base de datos
     if (fbp) localStorage.setItem('meta_fbp', fbp);
     if (fbc) localStorage.setItem('meta_fbc', fbc);
 
-    // 3. Disparar evento de conversión 'Lead' limpio (sin código de prueba)
+    // Disparar evento de conversión 'Lead'
     if (typeof fbq === 'function') {
       fbq('track', 'Lead', {
         content_name: 'Boton WhatsApp Directo',
@@ -222,21 +219,19 @@
       });
     }
 
-    // 4. Número de teléfono configurado
     const numeroUnico = "5492236796945"; 
+    // Mensaje limpio sin códigos extraños para que no rebote
+    const mensaje = "¡Hola! Quiero mi usuario en Good Luck y el bono del 100%.";
     
-    // 5. Mensaje automático
-    let mensaje = "¡Hola! Quiero registrarme en Good Luck y reclamar mi bono del 100%.";
-    
-    if (fbp) {
-      mensaje += ` [Ref: ${fbp}]`;
-    }
+    // URL universal que funciona perfecto en iOS, Android y Navegadores Web
+    const urlFinal = `https://api.whatsapp.com/send?phone=${numeroUnico}&text=${encodeURIComponent(mensaje)}`;
 
-    const urlFinal = `https://wa.me/${numeroUnico}?text=${encodeURIComponent(mensaje)}`;
-
-    // Espera de 300ms para asegurar el envío del evento antes de redireccionar
+    // Redirección directa e infalible
     setTimeout(function() {
       window.location.href = urlFinal;
-    }, 300);
+    }, 100);
   }
 </script>
+
+</body>
+</html>
