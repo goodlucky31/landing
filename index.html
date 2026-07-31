@@ -122,8 +122,10 @@
     }
   </style>
 
-  <!-- Meta Pixel Code -->
   <script>
+    // Generamos un event_id único para evitar conflictos de deduplicación en PageView
+    window.pixelEventId = 'pv_' + Math.random().toString(36).substring(2) + '_' + Date.now();
+
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -134,13 +136,12 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     
     fbq('init', '2141536543066953');
-    fbq('track', 'PageView');
+    fbq('track', 'PageView', {}, { eventID: window.pixelEventId });
   </script>
   <noscript>
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2141536543066953&ev=PageView&noscript=1"/>
   </noscript>
-  <!-- End Meta Pixel Code -->
-</head>
+  </head>
 <body>
 
 <div class="card-container">
@@ -208,25 +209,20 @@
     if (fbp) localStorage.setItem('meta_fbp', fbp);
     if (fbc) localStorage.setItem('meta_fbc', fbc);
 
-    // Disparar evento de conversión 'Lead'
+    // Disparar evento de conversión 'Lead' con su ID único para rastreo perfecto
+    const leadEventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).substring(2);
     if (typeof fbq === 'function') {
       fbq('track', 'Lead', {
         content_name: 'Boton WhatsApp Directo',
         currency: 'ARS',
-        value: 0.00,
-        fbp: fbp,
-        fbc: fbc
-      });
+        value: 0.00
+      }, { eventID: leadEventId });
     }
 
     const numeroUnico = "5492236796945"; 
-    // Mensaje limpio sin códigos extraños para que no rebote
     const mensaje = "¡Hola! Quiero mi usuario en Good Luck y el bono del 100%.";
-    
-    // URL universal que funciona perfecto en iOS, Android y Navegadores Web
     const urlFinal = `https://api.whatsapp.com/send?phone=${numeroUnico}&text=${encodeURIComponent(mensaje)}`;
 
-    // Redirección directa e infalible
     setTimeout(function() {
       window.location.href = urlFinal;
     }, 100);
