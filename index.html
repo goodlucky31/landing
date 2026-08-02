@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -10,9 +10,9 @@
     // CONFIGURACIÓN
     // ════════════════════════════════════════
     const PIXEL_ID     = '2141536543066953';
-    const ACCESS_TOKEN = 'EAAcLCVnJCDoBSMHqZAZBAE94xEqeUgQ9Qa4LNOpN8droc9WxJkyPuHXtZAODuHQd4ywTWtHVw7nZCq4LHxlB7yft4xzGWZCwaLQv2h2uEjRIR59B02gV2GZAVC82K64ZAQBi1aNORPR1WdVAEZAZBKadGqwIe5uZBSnnfK4baZA4z5n0f6KTAaYecAdaczXkqghTZAOeMAZDZD;
+    const ACCESS_TOKEN = 'EAAcLCVnJCDoBSPjyWBxfPlWC3usGeGtAZAljMREw814dqDsfre5M7ZAm0WC1o5wnUozauYe18juQz0R0hrqE5r9YYenipcXZCgZCG8yByRNAe0TVotbZCpCLjzVbKgcFl19QPNdmalU0Ls72HBfuleE4XSDKXAzcHnIU9koSdTJ1ZA5fwYt1M0AKZBblOaqu1tw0wZDZD';
     const WHATSAPP_NUM = '5492236796945';
-    const EVENT_URL    = 'TU_URL';   // ← Solo este falta, ponés la URL de tu landing
+    const EVENT_URL    = 'https://goodlucky31.github.io/landing/';
   </script>
 
   <!-- META PIXEL -->
@@ -261,64 +261,117 @@
     <div class="paso">
       <div class="paso-num">2</div>
       <div class="paso-texto">
-        <strong>Recibí tu cuenta VIP</strong>
-        <span>Te creamos tu cuenta en minutos</span>
+        <strong>Recibís tu código de bono</strong>
+        <span>Te lo enviamos al instante</span>
       </div>
     </div>
     <div class="paso">
       <div class="paso-num">3</div>
       <div class="paso-texto">
-        <strong>Cargá y jugá</strong>
-        <span>Tu bono se acredita automáticamente</span>
+        <strong>Cargás fichas y jugás</strong>
+        <span>Con tu bono de $5.000 activado</span>
       </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
     © 2025 Casino VIP · Jugá con responsabilidad · +18
   </div>
 
   <!-- ════════════════════════════════════════ -->
-  <!--        SISTEMA REF + WHATSAPP           -->
+  <!-- SCRIPT PRINCIPAL -->
   <!-- ════════════════════════════════════════ -->
   <script>
+    // ── Genera un REF único y lo guarda en sessionStorage ──
     function generarREF() {
-      const ts   = Date.now().toString(36).toUpperCase();
-      const rand = Math.random().toString(36).substr(2, 5).toUpperCase();
-      return 'REF-' + ts + '-' + rand;
+      let ref = sessionStorage.getItem('casino_ref');
+      if (!ref) {
+        ref = 'REF-' + Date.now() + '-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+        sessionStorage.setItem('casino_ref', ref);
+      }
+      return ref;
     }
 
+    // ── Lee cookie por nombre ──
     function getCookie(name) {
       const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
       return match ? match[2] : null;
     }
 
-    const REF = generarREF();
+    // ── Guarda fbp y fbc en sessionStorage para usarlos en confirmar-venta ──
+    function guardarCookiesMeta() {
+      const fbp = getCookie('_fbp');
+      const fbc = getCookie('_fbc');
+      if (fbp) sessionStorage.setItem('casino_fbp', fbp);
+      if (fbc) sessionStorage.setItem('casino_fbc', fbc);
+    }
 
-    const datos = {
-      ref       : REF,
-      fbp       : getCookie('_fbp') || '',
-      fbc       : getCookie('_fbc') || '',
-      url       : EVENT_URL,
-      timestamp : Math.floor(Date.now() / 1000)
-    };
+    // ── Envía evento Lead a Meta CAPI ──
+    async function enviarEventoLead(ref) {
+      const fbp = sessionStorage.getItem('casino_fbp') || getCookie('_fbp') || '';
+      const fbc = sessionStorage.getItem('casino_fbc') || getCookie('_fbc') || '';
 
-    sessionStorage.setItem('casinoData_' + REF, JSON.stringify(datos));
-    sessionStorage.setItem('ultimoREF', REF);
+      const payload = {
+        data: [{
+          event_name: 'Lead',
+          event_time: Math.floor(Date.now() / 1000),
+          event_source_url: EVENT_URL,
+          action_source: 'website',
+          event_id: ref,
+          user_data: {
+            fbp: fbp,
+            fbc: fbc,
+            client_user_agent: navigator.userAgent
+          }
+        }]
+      };
 
+      try {
+        await fetch(
+          `https://graph.facebook.com/v19.0/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          }
+        );
+        console.log('✅ Evento Lead enviado - REF:', ref);
+      } catch (e) {
+        console.warn('⚠️ Error enviando Lead:', e);
+      }
+    }
+
+    // ── Función principal al hacer clic en WhatsApp ──
     function irAWhatsapp(e) {
       e.preventDefault();
 
-      fbq('track', 'Lead', { content_name: 'Bono Casino', ref: REF });
+      guardarCookiesMeta();
+      const ref = generarREF();
 
+      // También disparar pixel Lead desde browser
+      fbq('track', 'Lead', {}, { eventID: ref });
+
+      // Enviar Lead por CAPI
+      enviarEventoLead(ref);
+
+      // Mensaje con REF incluido
       const mensaje = encodeURIComponent(
-        '¡Hola! Quiero reclamar mi bono de bienvenida 🎰\nMi código: ' + REF
+        `Hola! Quiero reclamar mi bono de bienvenida 🎰\nREF: ${ref}`
       );
-      const url = 'https://wa.me/' + WHATSAPP_NUM + '?text=' + mensaje;
 
-      setTimeout(() => { window.location.href = url; }, 300);
+      const url = `https://wa.me/${WHATSAPP_NUM}?text=${mensaje}`;
+
+      // Pequeño delay para que el evento se envíe
+      setTimeout(() => {
+        window.open(url, '_blank');
+      }, 300);
     }
+
+    // ── Al cargar la página guardamos las cookies ──
+    window.addEventListener('load', () => {
+      guardarCookiesMeta();
+      generarREF();
+    });
   </script>
 
 </body>
