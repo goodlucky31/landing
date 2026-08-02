@@ -1,329 +1,325 @@
-!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Good Luck - Bono 100%</title>
-  <meta name="description" content="Accedé a tu bono del 100%.">
-  
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-image: linear-gradient(
-        rgba(0, 0, 0, 0.55),
-        rgba(0, 0, 0, 0.55)
-      ), url('https://images.unsplash.com/photo-1596838132731-3301c3fd4317?q=80&w=1200&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-      color: white;
-    }
+  <title>🎰 Conseguí tu Bono de Bienvenida</title>
 
-    .card-container {
-      width: 90%;
-      max-width: 420px;
-      background: rgba(24, 26, 32, 0.94);
-      border: 2px solid #ffcc00;
-      border-radius: 16px;
-      padding: 35px 25px;
-      text-align: center;
-      box-sizing: border-box;
-      box-shadow: 0 0 30px rgba(255, 204, 0, 0.35),
-                  inset 0 0 15px rgba(255, 204, 0, 0.1);
-      backdrop-filter: blur(6px);
-    }
-
-    h1 {
-      margin: 0 0 6px 0;
-      font-size: 30px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #ffffff;
-    }
-
-    .subtitle {
-      margin: 0 0 15px 0;
-      font-size: 14px;
-      font-weight: 700;
-      color: #ffcc00;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-    }
-
-    .description-text {
-      font-size: 14px;
-      color: #e0e0e0;
-      margin-bottom: 25px;
-      line-height: 1.4;
-    }
-
-    .btn-submit {
-      width: 100%;
-      background: linear-gradient(180deg, #00e676 0%, #00b34a 100%);
-      border: none;
-      border-radius: 10px;
-      padding: 18px 10px;
-      font-size: 18px;
-      font-weight: 800;
-      color: #ffffff;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      box-shadow: 0 4px 20px rgba(0, 230, 118, 0.45);
-      transition: transform 0.1s, filter 0.2s;
-      margin-bottom: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-submit:hover  { filter: brightness(1.1); }
-    .btn-submit:active { transform: scale(0.98); }
-
-    .features-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      border-top: 1px solid rgba(255, 204, 0, 0.2);
-      padding-top: 25px;
-      gap: 10px;
-    }
-
-    .feature-item {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .feature-icon {
-      width: 45px;
-      height: 45px;
-      margin-bottom: 8px;
-    }
-
-    .feature-text {
-      font-size: 10px;
-      font-weight: 700;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-      line-height: 1.2;
-    }
-  </style>
-
-  <!-- ================================================
-       META PIXEL — inicialización temprana
-       ================================================ -->
   <script>
-    // Event ID único para PageView (deduplicación con CAPI)
-    window.pixelPageViewId = 'pv_' + Math.random().toString(36).substring(2) + '_' + Date.now();
+    // ════════════════════════════════════════
+    // CONFIGURACIÓN
+    // ════════════════════════════════════════
+    const PIXEL_ID     = '2141536543066953';
+    const ACCESS_TOKEN = 'EAAcLCVnJCDoBSMHqZAZBAE94xEqeUgQ9Qa4LNOpN8droc9WxJkyPuHXtZAODuHQd4ywTWtHVw7nZCq4LHxlB7yft4xzGWZCwaLQv2h2uEjRIR59B02gV2GZAVC82K64ZAQBi1aNORPR1WdVAEZAZBKadGqwIe5uZBSnnfK4baZA4z5n0f6KTAaYecAdaczXkqghTZAOeMAZDZD;
+    const WHATSAPP_NUM = '5492236796945';
+    const EVENT_URL    = 'TU_URL';   // ← Solo este falta, ponés la URL de tu landing
+  </script>
 
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)
-    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  <!-- META PIXEL -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
 
-    fbq('init', '2141536543066953');
-    fbq('track', 'PageView', {}, { eventID: window.pixelPageViewId });
+    fbq('init', PIXEL_ID);
+    fbq('track', 'PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=2141536543066953&ev=PageView&noscript=1"/>
+    src="https://www.facebook.com/tr?id=2141536543066953&ev=PageView&noscript=1"/>
   </noscript>
-</head>
 
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+      min-height: 100vh;
+      color: white;
+    }
+    .header {
+      background: linear-gradient(90deg, #1a1a2e, #0d0d1a);
+      border-bottom: 2px solid #FFD700;
+      padding: 12px 20px;
+      text-align: center;
+    }
+    .header-logo { font-size: 22px; font-weight: bold; color: #FFD700; letter-spacing: 2px; }
+    .header-sub { font-size: 11px; color: #aaa; margin-top: 2px; }
+    .hero { text-align: center; padding: 35px 20px 25px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255,215,0,0.15);
+      border: 1px solid #FFD700;
+      color: #FFD700;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+    .hero h1 { font-size: 32px; font-weight: 900; line-height: 1.2; margin-bottom: 10px; }
+    .hero h1 span { color: #FFD700; text-shadow: 0 0 20px rgba(255,215,0,0.5); }
+    .hero-sub { font-size: 16px; color: #ccc; margin-bottom: 20px; }
+    .bono-box {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 0 20px 25px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(255,215,0,0.3);
+    }
+    .bono-titulo { color: #1a1a2e; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+    .bono-monto { color: #1a1a2e; font-size: 52px; font-weight: 900; line-height: 1; margin: 5px 0; }
+    .bono-desc { color: #3a2000; font-size: 14px; }
+    .beneficios { padding: 0 20px 20px; }
+    .beneficio-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 12px 15px;
+      margin-bottom: 10px;
+    }
+    .beneficio-icon { font-size: 24px; min-width: 36px; text-align: center; }
+    .beneficio-texto strong { display: block; font-size: 14px; color: #FFD700; }
+    .beneficio-texto span { font-size: 12px; color: #aaa; }
+    .urgencia {
+      background: rgba(255,82,82,0.1);
+      border: 1px solid rgba(255,82,82,0.3);
+      border-radius: 10px;
+      padding: 12px 15px;
+      margin: 0 20px 20px;
+      text-align: center;
+      font-size: 13px;
+      color: #ff8a80;
+    }
+    .urgencia strong { color: #ff5252; }
+    .cta-section { padding: 0 20px 15px; }
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      text-decoration: none;
+      border-radius: 14px;
+      font-size: 20px;
+      font-weight: 900;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(37,211,102,0.5); }
+    .btn-whatsapp:active { transform: translateY(0); }
+    .btn-sub { text-align: center; font-size: 12px; color: #888; margin-top: 8px; }
+    .social-proof { padding: 15px 20px; text-align: center; }
+    .avatares { display: flex; justify-content: center; margin-bottom: 8px; }
+    .avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 2px solid #1a1a2e; margin-left: -8px;
+      font-size: 18px; display: flex; align-items: center;
+      justify-content: center; background: #333;
+    }
+    .social-texto { font-size: 13px; color: #aaa; }
+    .social-texto strong { color: #FFD700; }
+    .pasos { padding: 20px; }
+    .pasos-titulo { text-align: center; font-size: 16px; font-weight: bold; color: #FFD700; margin-bottom: 15px; }
+    .paso { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+    .paso-num {
+      min-width: 30px; height: 30px; background: #FFD700;
+      color: #1a1a2e; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 14px;
+    }
+    .paso-texto strong { display: block; font-size: 14px; color: white; }
+    .paso-texto span { font-size: 12px; color: #888; }
+    .footer { text-align: center; padding: 20px; font-size: 11px; color: #555; border-top: 1px solid #222; }
+  </style>
+</head>
 <body>
 
-<div class="card-container">
-  <h1>Good Luck</h1>
-  <div class="subtitle">¡Bono del 100% de Regalo!</div>
-
-  <p class="description-text">
-    Toca el botón de abajo para comunicarte por WhatsApp,
-    crear tu usuario y reclamar tu bono instantáneo.
-  </p>
-
-  <button type="button" onclick="irAWhatsApp()" class="btn-submit">
-    <span>RECLAMAR BONO 100%</span>
-  </button>
-
-  <div class="features-container">
-
-    <div class="feature-item">
-      <svg class="feature-icon" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="44" fill="none" stroke="#ffcc00"
-                stroke-width="4" stroke-dasharray="2 2"/>
-        <circle cx="50" cy="50" r="38" fill="none" stroke="#ffcc00" stroke-width="3"/>
-        <text x="50" y="58" font-family="'Segoe UI',sans-serif" font-size="24"
-              font-weight="bold" fill="#ffcc00" text-anchor="middle">18+</text>
-      </svg>
-      <div class="feature-text">Términos para<br>mayores de edad</div>
-    </div>
-
-    <div class="feature-item">
-      <svg class="feature-icon" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="44" fill="none" stroke="#ffcc00"
-                stroke-width="4" stroke-dasharray="2 2"/>
-        <path d="M50 20 A 30 30 0 1 1 23 38" fill="none" stroke="#ffcc00"
-              stroke-width="3" stroke-linecap="round"/>
-        <polygon points="23,28 23,38 33,38" fill="#ffcc00"/>
-        <text x="50" y="58" font-family="'Segoe UI',sans-serif" font-size="22"
-              font-weight="bold" fill="#ffcc00" text-anchor="middle">24h</text>
-      </svg>
-      <div class="feature-text">Atención<br>24 Hs</div>
-    </div>
-
-    <div class="feature-item">
-      <svg class="feature-icon" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="44" fill="none" stroke="#ffcc00"
-                stroke-width="4" stroke-dasharray="2 2"/>
-        <path d="M32 65 L68 65 M50 30 L50 65 M40 30 L60 30
-                 M32 35 L32 50 A 8 8 0 0 0 48 50 Z
-                 M52 35 L52 50 A 8 8 0 0 0 68 50 Z"
-              fill="none" stroke="#ffcc00" stroke-width="3" stroke-linejoin="round"/>
-      </svg>
-      <div class="feature-text">Juego<br>Responsable</div>
-    </div>
-
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-logo">🎰 CASINO VIP</div>
+    <div class="header-sub">Plataforma oficial de juegos</div>
   </div>
-</div>
 
-<!-- ================================================
-     LÓGICA PRINCIPAL
-     ================================================ -->
-<script>
-  // ─────────────────────────────────────────────
-  // HELPERS
-  // ─────────────────────────────────────────────
-  function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-    return '';
-  }
+  <!-- HERO -->
+  <div class="hero">
+    <div class="badge">🔥 OFERTA LIMITADA</div>
+    <h1>Conseguí tu<br><span>Bono de Bienvenida</span></h1>
+    <p class="hero-sub">Registrate hoy y empezá a ganar</p>
+  </div>
 
-  function getQueryParam(param) {
-    return new URLSearchParams(window.location.search).get(param) || '';
-  }
+  <!-- BONO -->
+  <div class="bono-box">
+    <div class="bono-titulo">💰 Bono de bienvenida</div>
+    <div class="bono-monto">$5.000</div>
+    <div class="bono-desc">en fichas gratis para jugar</div>
+  </div>
 
-  // ─────────────────────────────────────────────
-  // GENERAR / RECUPERAR external_id persistente
-  // Se crea una sola vez por navegador y se reutiliza
-  // ─────────────────────────────────────────────
-  function getOrCreateExternalId() {
-    let extId = localStorage.getItem('meta_ext_id');
-    if (!extId) {
-      extId = 'gl_' + Date.now() + '_' + Math.random().toString(36).substring(2, 10);
-      localStorage.setItem('meta_ext_id', extId);
+  <!-- BENEFICIOS -->
+  <div class="beneficios">
+    <div class="beneficio-item">
+      <div class="beneficio-icon">⚡</div>
+      <div class="beneficio-texto">
+        <strong>Acreditación inmediata</strong>
+        <span>Fichas en tu cuenta en minutos</span>
+      </div>
+    </div>
+    <div class="beneficio-item">
+      <div class="beneficio-icon">🎮</div>
+      <div class="beneficio-texto">
+        <strong>+500 juegos disponibles</strong>
+        <span>Slots, ruleta, blackjack y más</span>
+      </div>
+    </div>
+    <div class="beneficio-item">
+      <div class="beneficio-icon">💸</div>
+      <div class="beneficio-texto">
+        <strong>Retiros rápidos</strong>
+        <span>Transferencia en el día</span>
+      </div>
+    </div>
+    <div class="beneficio-item">
+      <div class="beneficio-icon">🔒</div>
+      <div class="beneficio-texto">
+        <strong>100% seguro</strong>
+        <span>Plataforma verificada y confiable</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- URGENCIA -->
+  <div class="urgencia">
+    ⏰ <strong>¡Quedan pocas plazas hoy!</strong><br>
+    Esta oferta vence a las 23:59 hs
+  </div>
+
+  <!-- BOTÓN WHATSAPP -->
+  <div class="cta-section">
+    <a id="btnWhatsapp" class="btn-whatsapp" href="#" onclick="irAWhatsapp(event)">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15
+                 -.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075
+                 -.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059
+                 -.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52
+                 .149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52
+                 -.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51
+                 -.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372
+                 -.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074
+                 .149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625
+                 .712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413
+                 .248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.528 5.855L0 24l6.335-1.505
+                 A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818
+                 a9.818 9.818 0 01-5.003-1.366l-.36-.214-3.724.885.916-3.619-.235-.372
+                 A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12
+                 12 17.42 17.42 21.818 12 21.818z"/>
+      </svg>
+      QUIERO MI BONO
+    </a>
+    <div class="btn-sub">✅ Gratis · Sin tarjeta · Respuesta inmediata</div>
+  </div>
+
+  <!-- SOCIAL PROOF -->
+  <div class="social-proof">
+    <div class="avatares">
+      <div class="avatar">👨</div>
+      <div class="avatar">👩</div>
+      <div class="avatar">👨</div>
+      <div class="avatar">👩</div>
+      <div class="avatar">👨</div>
+    </div>
+    <div class="social-texto">
+      <strong>+2.847 personas</strong> reclamaron su bono esta semana
+    </div>
+  </div>
+
+  <!-- PASOS -->
+  <div class="pasos">
+    <div class="pasos-titulo">📋 ¿Cómo funciona?</div>
+    <div class="paso">
+      <div class="paso-num">1</div>
+      <div class="paso-texto">
+        <strong>Escribinos por WhatsApp</strong>
+        <span>Hacé clic en el botón verde</span>
+      </div>
+    </div>
+    <div class="paso">
+      <div class="paso-num">2</div>
+      <div class="paso-texto">
+        <strong>Recibí tu cuenta VIP</strong>
+        <span>Te creamos tu cuenta en minutos</span>
+      </div>
+    </div>
+    <div class="paso">
+      <div class="paso-num">3</div>
+      <div class="paso-texto">
+        <strong>Cargá y jugá</strong>
+        <span>Tu bono se acredita automáticamente</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    © 2025 Casino VIP · Jugá con responsabilidad · +18
+  </div>
+
+  <!-- ════════════════════════════════════════ -->
+  <!--        SISTEMA REF + WHATSAPP           -->
+  <!-- ════════════════════════════════════════ -->
+  <script>
+    function generarREF() {
+      const ts   = Date.now().toString(36).toUpperCase();
+      const rand = Math.random().toString(36).substr(2, 5).toUpperCase();
+      return 'REF-' + ts + '-' + rand;
     }
-    return extId;
-  }
 
-  // ─────────────────────────────────────────────
-  // GUARDAR fbp, fbc y external_id al cargar
-  // ─────────────────────────────────────────────
-  function guardarDatosMeta() {
-    // fbp — generado por el pixel automáticamente
-    const fbp = getCookie('_fbp');
-    if (fbp) localStorage.setItem('meta_fbp', fbp);
-
-    // fbc — desde cookie o construido con fbclid
-    let fbc = getCookie('_fbc') || localStorage.getItem('meta_fbc') || '';
-    const fbclid = getQueryParam('fbclid');
-    if (fbclid) {
-      fbc = `fb.1.${Math.floor(Date.now() / 1000)}.${fbclid}`;
-      // ✅ Guardar fbclid en sessionStorage por si recarga
-      sessionStorage.setItem('meta_fbclid', fbclid);
-    }
-    // Recuperar fbclid de sessionStorage si no está en URL
-    if (!fbclid) {
-      const storedFbclid = sessionStorage.getItem('meta_fbclid');
-      if (storedFbclid && !fbc) {
-        fbc = `fb.1.${Math.floor(Date.now() / 1000)}.${storedFbclid}`;
-      }
-    }
-    if (fbc) localStorage.setItem('meta_fbc', fbc);
-
-    // external_id — persistente por navegador
-    getOrCreateExternalId();
-  }
-
-  // ✅ Ejecutar al cargar la página
-  guardarDatosMeta();
-
-  // ─────────────────────────────────────────────
-  // GUARDAR REGISTRO DE REFs para confirmar-venta
-  // Permite recuperar fbp/fbc/extId del cliente
-  // ─────────────────────────────────────────────
-  function guardarRef(refCode, datos) {
-    const refs = JSON.parse(localStorage.getItem('meta_refs') || '{}');
-    // Guardar con timestamp para limpiar viejos después
-    refs[refCode] = { ...datos, ts: Date.now() };
-
-    // Limpiar refs de más de 7 días
-    const ahora = Date.now();
-    Object.keys(refs).forEach(k => {
-      if (ahora - refs[k].ts > 7 * 24 * 60 * 60 * 1000) delete refs[k];
-    });
-
-    localStorage.setItem('meta_refs', JSON.stringify(refs));
-  }
-
-  // ─────────────────────────────────────────────
-  // CLICK EN BOTÓN → WhatsApp
-  // ─────────────────────────────────────────────
-  function irAWhatsApp() {
-    // Leer datos del cliente
-    const fbp   = localStorage.getItem('meta_fbp') || '';
-    const fbc   = localStorage.getItem('meta_fbc') || '';
-    const extId = getOrCreateExternalId();
-
-    // Event ID único para Lead (deduplicación)
-    const leadEventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).substring(2);
-
-    // ✅ Código de referencia corto (8 chars) para trazabilidad en WhatsApp
-    const refCode = extId.substring(3, 11);
-
-    // Guardar todos los datos asociados a este refCode
-    guardarRef(refCode, { fbp, fbc, extId, leadEventId });
-
-    // Guardar también el último leadEventId por si acaso
-    localStorage.setItem('last_lead_event_id', leadEventId);
-    localStorage.setItem('last_ref_code', refCode);
-
-    // Disparar evento Lead en el Pixel del browser
-    if (typeof fbq === 'function') {
-      fbq('track', 'Lead', {
-        content_name: 'Boton WhatsApp Directo',
-        currency: 'ARS',
-        value: 0.00
-      }, { eventID: leadEventId });
+    function getCookie(name) {
+      const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? match[2] : null;
     }
 
-    // ✅ Mensaje con REF visible → vos lo ves en WhatsApp
-    // Luego en confirmar-venta.html usás ese REF para recuperar fbp/fbc/extId
-    const numeroUnico = "5492236796945";
-    const mensaje = `¡Hola! Quiero mi usuario en Good Luck y el bono del 100%. [REF:${refCode}]`;
+    const REF = generarREF();
 
-    setTimeout(() => {
-      window.location.href = `https://api.whatsapp.com/send?phone=${numeroUnico}&text=${encodeURIComponent(mensaje)}`;
-    }, 150);
-  }
-</script>
+    const datos = {
+      ref       : REF,
+      fbp       : getCookie('_fbp') || '',
+      fbc       : getCookie('_fbc') || '',
+      url       : EVENT_URL,
+      timestamp : Math.floor(Date.now() / 1000)
+    };
+
+    sessionStorage.setItem('casinoData_' + REF, JSON.stringify(datos));
+    sessionStorage.setItem('ultimoREF', REF);
+
+    function irAWhatsapp(e) {
+      e.preventDefault();
+
+      fbq('track', 'Lead', { content_name: 'Bono Casino', ref: REF });
+
+      const mensaje = encodeURIComponent(
+        '¡Hola! Quiero reclamar mi bono de bienvenida 🎰\nMi código: ' + REF
+      );
+      const url = 'https://wa.me/' + WHATSAPP_NUM + '?text=' + mensaje;
+
+      setTimeout(() => { window.location.href = url; }, 300);
+    }
+  </script>
 
 </body>
 </html>
