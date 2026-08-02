@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -10,7 +10,10 @@
     body {
       margin: 0;
       padding: 0;
-      background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('https://images.unsplash.com/photo-1596838132731-3301c3fd4317?q=80&w=1200&auto=format&fit=crop');
+      background-image: linear-gradient(
+        rgba(0, 0, 0, 0.55),
+        rgba(0, 0, 0, 0.55)
+      ), url('https://images.unsplash.com/photo-1596838132731-3301c3fd4317?q=80&w=1200&auto=format&fit=crop');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -32,7 +35,8 @@
       padding: 35px 25px;
       text-align: center;
       box-sizing: border-box;
-      box-shadow: 0 0 30px rgba(255, 204, 0, 0.35), inset 0 0 15px rgba(255, 204, 0, 0.1);
+      box-shadow: 0 0 30px rgba(255, 204, 0, 0.35),
+                  inset 0 0 15px rgba(255, 204, 0, 0.1);
       backdrop-filter: blur(6px);
     }
 
@@ -82,13 +86,8 @@
       gap: 10px;
     }
 
-    .btn-submit:hover {
-      filter: brightness(1.1);
-    }
-
-    .btn-submit:active {
-      transform: scale(0.98);
-    }
+    .btn-submit:hover  { filter: brightness(1.1); }
+    .btn-submit:active { transform: scale(0.98); }
 
     .features-container {
       display: flex;
@@ -122,95 +121,191 @@
     }
   </style>
 
+  <!-- ================================================
+       META PIXEL — inicialización temprana
+       ================================================ -->
   <script>
-    // Generamos un event_id único para evitar conflictos de deduplicación en PageView
-    window.pixelEventId = 'pv_' + Math.random().toString(36).substring(2) + '_' + Date.now();
+    // Event ID único para PageView (deduplicación con CAPI)
+    window.pixelPageViewId = 'pv_' + Math.random().toString(36).substring(2) + '_' + Date.now();
 
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
     fbq('init', '2141536543066953');
-    fbq('track', 'PageView', {}, { eventID: window.pixelEventId });
+    fbq('track', 'PageView', {}, { eventID: window.pixelPageViewId });
   </script>
   <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2141536543066953&ev=PageView&noscript=1"/>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=2141536543066953&ev=PageView&noscript=1"/>
   </noscript>
-  </head>
+</head>
+
 <body>
 
 <div class="card-container">
   <h1>Good Luck</h1>
   <div class="subtitle">¡Bono del 100% de Regalo!</div>
-  
-  <p class="description-text">Toca el botón de abajo para comunicarte por WhatsApp, crear tu usuario y reclamar tu bono instantáneo.</p>
-  
+
+  <p class="description-text">
+    Toca el botón de abajo para comunicarte por WhatsApp,
+    crear tu usuario y reclamar tu bono instantáneo.
+  </p>
+
   <button type="button" onclick="irAWhatsApp()" class="btn-submit">
     <span>RECLAMAR BONO 100%</span>
   </button>
 
   <div class="features-container">
+
     <div class="feature-item">
       <svg class="feature-icon" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="44" fill="none" stroke="#ffcc00" stroke-width="4" stroke-dasharray="2 2" />
-        <circle cx="50" cy="50" r="38" fill="none" stroke="#ffcc00" stroke-width="3" />
-        <text x="50" y="58" font-family="'Segoe UI', sans-serif" font-size="24" font-weight="bold" fill="#ffcc00" text-anchor="middle">18+</text>
+        <circle cx="50" cy="50" r="44" fill="none" stroke="#ffcc00"
+                stroke-width="4" stroke-dasharray="2 2"/>
+        <circle cx="50" cy="50" r="38" fill="none" stroke="#ffcc00" stroke-width="3"/>
+        <text x="50" y="58" font-family="'Segoe UI',sans-serif" font-size="24"
+              font-weight="bold" fill="#ffcc00" text-anchor="middle">18+</text>
       </svg>
       <div class="feature-text">Términos para<br>mayores de edad</div>
     </div>
 
     <div class="feature-item">
       <svg class="feature-icon" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="44" fill="none" stroke="#ffcc00" stroke-width="4" stroke-dasharray="2 2" />
-        <path d="M50 20 A 30 30 0 1 1 23 38" fill="none" stroke="#ffcc00" stroke-width="3" stroke-linecap="round"/>
-        <polygon points="23,28 23,38 33,38" fill="#ffcc00" />
-        <text x="50" y="58" font-family="'Segoe UI', sans-serif" font-size="22" font-weight="bold" fill="#ffcc00" text-anchor="middle">24h</text>
+        <circle cx="50" cy="50" r="44" fill="none" stroke="#ffcc00"
+                stroke-width="4" stroke-dasharray="2 2"/>
+        <path d="M50 20 A 30 30 0 1 1 23 38" fill="none" stroke="#ffcc00"
+              stroke-width="3" stroke-linecap="round"/>
+        <polygon points="23,28 23,38 33,38" fill="#ffcc00"/>
+        <text x="50" y="58" font-family="'Segoe UI',sans-serif" font-size="22"
+              font-weight="bold" fill="#ffcc00" text-anchor="middle">24h</text>
       </svg>
       <div class="feature-text">Atención<br>24 Hs</div>
     </div>
 
     <div class="feature-item">
       <svg class="feature-icon" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="44" fill="none" stroke="#ffcc00" stroke-width="4" stroke-dasharray="2 2" />
-        <path d="M32 65 L68 65 M50 30 L50 65 M40 30 L60 30 M32 35 L32 50 A 8 8 0 0 0 48 50 Z M52 35 L52 50 A 8 8 0 0 0 68 50 Z" fill="none" stroke="#ffcc00" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="50" cy="50" r="44" fill="none" stroke="#ffcc00"
+                stroke-width="4" stroke-dasharray="2 2"/>
+        <path d="M32 65 L68 65 M50 30 L50 65 M40 30 L60 30
+                 M32 35 L32 50 A 8 8 0 0 0 48 50 Z
+                 M52 35 L52 50 A 8 8 0 0 0 68 50 Z"
+              fill="none" stroke="#ffcc00" stroke-width="3" stroke-linejoin="round"/>
       </svg>
       <div class="feature-text">Juego<br>Responsable</div>
     </div>
+
   </div>
 </div>
 
+<!-- ================================================
+     LÓGICA PRINCIPAL
+     ================================================ -->
 <script>
+  // ─────────────────────────────────────────────
+  // HELPERS
+  // ─────────────────────────────────────────────
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
+    return '';
   }
 
   function getQueryParam(param) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
+    return new URLSearchParams(window.location.search).get(param) || '';
   }
 
-  function irAWhatsApp() {
-    const fbp = getCookie('_fbp') || '';
-    const fbclid = getQueryParam('fbclid');
-    let fbc = '';
-    
-    if (fbclid) {
-      const creationTime = Math.floor(Date.now() / 1000);
-      fbc = `fb.1.${creationTime}.${fbclid}`;
+  // ─────────────────────────────────────────────
+  // GENERAR / RECUPERAR external_id persistente
+  // Se crea una sola vez por navegador y se reutiliza
+  // ─────────────────────────────────────────────
+  function getOrCreateExternalId() {
+    let extId = localStorage.getItem('meta_ext_id');
+    if (!extId) {
+      extId = 'gl_' + Date.now() + '_' + Math.random().toString(36).substring(2, 10);
+      localStorage.setItem('meta_ext_id', extId);
     }
+    return extId;
+  }
 
+  // ─────────────────────────────────────────────
+  // GUARDAR fbp, fbc y external_id al cargar
+  // ─────────────────────────────────────────────
+  function guardarDatosMeta() {
+    // fbp — generado por el pixel automáticamente
+    const fbp = getCookie('_fbp');
     if (fbp) localStorage.setItem('meta_fbp', fbp);
+
+    // fbc — desde cookie o construido con fbclid
+    let fbc = getCookie('_fbc') || localStorage.getItem('meta_fbc') || '';
+    const fbclid = getQueryParam('fbclid');
+    if (fbclid) {
+      fbc = `fb.1.${Math.floor(Date.now() / 1000)}.${fbclid}`;
+      // ✅ Guardar fbclid en sessionStorage por si recarga
+      sessionStorage.setItem('meta_fbclid', fbclid);
+    }
+    // Recuperar fbclid de sessionStorage si no está en URL
+    if (!fbclid) {
+      const storedFbclid = sessionStorage.getItem('meta_fbclid');
+      if (storedFbclid && !fbc) {
+        fbc = `fb.1.${Math.floor(Date.now() / 1000)}.${storedFbclid}`;
+      }
+    }
     if (fbc) localStorage.setItem('meta_fbc', fbc);
 
-    // Disparar evento de conversión 'Lead' con su ID único para rastreo perfecto
+    // external_id — persistente por navegador
+    getOrCreateExternalId();
+  }
+
+  // ✅ Ejecutar al cargar la página
+  guardarDatosMeta();
+
+  // ─────────────────────────────────────────────
+  // GUARDAR REGISTRO DE REFs para confirmar-venta
+  // Permite recuperar fbp/fbc/extId del cliente
+  // ─────────────────────────────────────────────
+  function guardarRef(refCode, datos) {
+    const refs = JSON.parse(localStorage.getItem('meta_refs') || '{}');
+    // Guardar con timestamp para limpiar viejos después
+    refs[refCode] = { ...datos, ts: Date.now() };
+
+    // Limpiar refs de más de 7 días
+    const ahora = Date.now();
+    Object.keys(refs).forEach(k => {
+      if (ahora - refs[k].ts > 7 * 24 * 60 * 60 * 1000) delete refs[k];
+    });
+
+    localStorage.setItem('meta_refs', JSON.stringify(refs));
+  }
+
+  // ─────────────────────────────────────────────
+  // CLICK EN BOTÓN → WhatsApp
+  // ─────────────────────────────────────────────
+  function irAWhatsApp() {
+    // Leer datos del cliente
+    const fbp   = localStorage.getItem('meta_fbp') || '';
+    const fbc   = localStorage.getItem('meta_fbc') || '';
+    const extId = getOrCreateExternalId();
+
+    // Event ID único para Lead (deduplicación)
     const leadEventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).substring(2);
+
+    // ✅ Código de referencia corto (8 chars) para trazabilidad en WhatsApp
+    const refCode = extId.substring(3, 11);
+
+    // Guardar todos los datos asociados a este refCode
+    guardarRef(refCode, { fbp, fbc, extId, leadEventId });
+
+    // Guardar también el último leadEventId por si acaso
+    localStorage.setItem('last_lead_event_id', leadEventId);
+    localStorage.setItem('last_ref_code', refCode);
+
+    // Disparar evento Lead en el Pixel del browser
     if (typeof fbq === 'function') {
       fbq('track', 'Lead', {
         content_name: 'Boton WhatsApp Directo',
@@ -219,13 +314,14 @@
       }, { eventID: leadEventId });
     }
 
-    const numeroUnico = "5492236796945"; 
-    const mensaje = "¡Hola! Quiero mi usuario en Good Luck y el bono del 100%.";
-    const urlFinal = `https://api.whatsapp.com/send?phone=${numeroUnico}&text=${encodeURIComponent(mensaje)}`;
+    // ✅ Mensaje con REF visible → vos lo ves en WhatsApp
+    // Luego en confirmar-venta.html usás ese REF para recuperar fbp/fbc/extId
+    const numeroUnico = "5492236796945";
+    const mensaje = `¡Hola! Quiero mi usuario en Good Luck y el bono del 100%. [REF:${refCode}]`;
 
-    setTimeout(function() {
-      window.location.href = urlFinal;
-    }, 100);
+    setTimeout(() => {
+      window.location.href = `https://api.whatsapp.com/send?phone=${numeroUnico}&text=${encodeURIComponent(mensaje)}`;
+    }, 150);
   }
 </script>
 
