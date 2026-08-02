@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -7,10 +7,10 @@
 
   <script>
     // ════════════════════════════════════════
-    // CONFIGURACIÓN
+    // CONFIGURACIÓN — EDITÁ SOLO AQUÍ
     // ════════════════════════════════════════
     const PIXEL_ID     = '2141536543066953';
-    const ACCESS_TOKEN = 'EAAcLCVnJCDoBSPjyWBxfPlWC3usGeGtAZAljMREw814dqDsfre5M7ZAm0WC1o5wnUozauYe18juQz0R0hrqE5r9YYenipcXZCgZCG8yByRNAe0TVotbZCpCLjzVbKgcFl19QPNdmalU0Ls72HBfuleE4XSDKXAzcHnIU9koSdTJ1ZA5fwYt1M0AKZBblOaqu1tw0wZDZD';
+    const ACCESS_TOKEN = 'EAAcLCVnJCDoBSPjyWBxfPlWC3usGeGtAZAljMREw814dqDsfre5M7ZAm0WC1o5wnUozauYe18juQz0R0hrqE5r9YYenipcXZCgZCG8yByRNAe0TVotbZCpCLjzVbKgcFl19QPNdmalU0Ls72HBfuleE4XSDKXAzcHnIU9koSdTJ1ZA5fwYt1M0AKZBblOaqu1tw0wZDZD;
     const WHATSAPP_NUM = '5492236796945';
     const EVENT_URL    = 'https://goodlucky31.github.io/landing/';
   </script>
@@ -25,7 +25,6 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-
     fbq('init', PIXEL_ID);
     fbq('track', 'PageView');
   </script>
@@ -36,12 +35,15 @@
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: 'Arial', sans-serif;
       background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
       min-height: 100vh;
       color: white;
     }
+
+    /* ── HEADER ── */
     .header {
       background: linear-gradient(90deg, #1a1a2e, #0d0d1a);
       border-bottom: 2px solid #FFD700;
@@ -49,23 +51,27 @@
       text-align: center;
     }
     .header-logo { font-size: 22px; font-weight: bold; color: #FFD700; letter-spacing: 2px; }
-    .header-sub { font-size: 11px; color: #aaa; margin-top: 2px; }
+    .header-sub  { font-size: 11px; color: #aaa; margin-top: 2px; }
+
+    /* ── HERO ── */
     .hero { text-align: center; padding: 35px 20px 25px; }
     .badge {
       display: inline-block;
       background: rgba(255,215,0,0.15);
       border: 1px solid #FFD700;
       color: #FFD700;
-      font-size: 12px;
-      font-weight: bold;
-      padding: 5px 16px;
-      border-radius: 20px;
-      margin-bottom: 16px;
-      letter-spacing: 1px;
+      font-size: 12px; font-weight: bold;
+      padding: 5px 16px; border-radius: 20px;
+      margin-bottom: 16px; letter-spacing: 1px;
     }
-    .hero h1 { font-size: 32px; font-weight: 900; line-height: 1.2; margin-bottom: 10px; }
+    .hero h1 {
+      font-size: 32px; font-weight: 900;
+      line-height: 1.2; margin-bottom: 10px;
+    }
     .hero h1 span { color: #FFD700; text-shadow: 0 0 20px rgba(255,215,0,0.5); }
     .hero-sub { font-size: 16px; color: #ccc; margin-bottom: 20px; }
+
+    /* ── BONO BOX — ahora es clickeable ── */
     .bono-box {
       background: linear-gradient(135deg, #FFD700, #FFA500);
       border-radius: 16px;
@@ -73,57 +79,70 @@
       margin: 0 20px 25px;
       text-align: center;
       box-shadow: 0 8px 32px rgba(255,215,0,0.3);
+
+      /* 👇 Hace que se vea clickeable */
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      user-select: none;
     }
-    .bono-titulo { color: #1a1a2e; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-    .bono-monto { color: #1a1a2e; font-size: 52px; font-weight: 900; line-height: 1; margin: 5px 0; }
-    .bono-desc { color: #3a2000; font-size: 14px; }
+    .bono-box:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 40px rgba(255,215,0,0.5);
+    }
+    .bono-box:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .bono-titulo  { color: #1a1a2e; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+    .bono-monto   { color: #1a1a2e; font-size: 68px; font-weight: 900; line-height: 1; margin: 5px 0; }
+    .bono-monto-sub { color: #1a1a2e; font-size: 22px; font-weight: 900; margin-bottom: 4px; }
+    .bono-desc    { color: #3a2000; font-size: 14px; }
+    .bono-cta-hint {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #5a3000;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── BENEFICIOS ── */
     .beneficios { padding: 0 20px 20px; }
     .beneficio-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      display: flex; align-items: center; gap: 12px;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 12px 15px;
-      margin-bottom: 10px;
+      border-radius: 10px; padding: 12px 15px; margin-bottom: 10px;
     }
     .beneficio-icon { font-size: 24px; min-width: 36px; text-align: center; }
     .beneficio-texto strong { display: block; font-size: 14px; color: #FFD700; }
-    .beneficio-texto span { font-size: 12px; color: #aaa; }
+    .beneficio-texto span   { font-size: 12px; color: #aaa; }
+
+    /* ── URGENCIA ── */
     .urgencia {
       background: rgba(255,82,82,0.1);
       border: 1px solid rgba(255,82,82,0.3);
-      border-radius: 10px;
-      padding: 12px 15px;
-      margin: 0 20px 20px;
-      text-align: center;
-      font-size: 13px;
-      color: #ff8a80;
+      border-radius: 10px; padding: 12px 15px;
+      margin: 0 20px 20px; text-align: center;
+      font-size: 13px; color: #ff8a80;
     }
     .urgencia strong { color: #ff5252; }
+
+    /* ── BOTÓN WHATSAPP ── */
     .cta-section { padding: 0 20px 15px; }
     .btn-whatsapp {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      width: 100%;
-      padding: 18px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      width: 100%; padding: 18px;
       background: linear-gradient(135deg, #25D366, #128C7E);
-      color: white;
-      text-decoration: none;
-      border-radius: 14px;
-      font-size: 20px;
-      font-weight: 900;
+      color: white; text-decoration: none;
+      border-radius: 14px; font-size: 20px; font-weight: 900;
       box-shadow: 0 6px 24px rgba(37,211,102,0.4);
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
+      transition: all 0.2s; cursor: pointer; border: none;
     }
-    .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(37,211,102,0.5); }
+    .btn-whatsapp:hover  { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(37,211,102,0.5); }
     .btn-whatsapp:active { transform: translateY(0); }
     .btn-sub { text-align: center; font-size: 12px; color: #888; margin-top: 8px; }
+
+    /* ── SOCIAL PROOF ── */
     .social-proof { padding: 15px 20px; text-align: center; }
     .avatares { display: flex; justify-content: center; margin-bottom: 8px; }
     .avatar {
@@ -134,6 +153,8 @@
     }
     .social-texto { font-size: 13px; color: #aaa; }
     .social-texto strong { color: #FFD700; }
+
+    /* ── PASOS ── */
     .pasos { padding: 20px; }
     .pasos-titulo { text-align: center; font-size: 16px; font-weight: bold; color: #FFD700; margin-bottom: 15px; }
     .paso { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
@@ -144,8 +165,14 @@
       font-weight: 900; font-size: 14px;
     }
     .paso-texto strong { display: block; font-size: 14px; color: white; }
-    .paso-texto span { font-size: 12px; color: #888; }
-    .footer { text-align: center; padding: 20px; font-size: 11px; color: #555; border-top: 1px solid #222; }
+    .paso-texto span   { font-size: 12px; color: #888; }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center; padding: 20px;
+      font-size: 11px; color: #555;
+      border-top: 1px solid #222;
+    }
   </style>
 </head>
 <body>
@@ -160,14 +187,18 @@
   <div class="hero">
     <div class="badge">🔥 OFERTA LIMITADA</div>
     <h1>Conseguí tu<br><span>Bono de Bienvenida</span></h1>
-    <p class="hero-sub">Registrate hoy y empezá a ganar</p>
+    <p class="hero-sub">Depositá hoy y te duplicamos el saldo</p>
   </div>
 
-  <!-- BONO -->
-  <div class="bono-box">
+  <!-- ══════════════════════════════════════ -->
+  <!-- BONO BOX — clickeable igual que botón -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="bono-box" onclick="irAWhatsapp(event)">
     <div class="bono-titulo">💰 Bono de bienvenida</div>
-    <div class="bono-monto">$5.000</div>
-    <div class="bono-desc">en fichas gratis para jugar</div>
+    <div class="bono-monto">100%</div>
+    <div class="bono-monto-sub">en tu primer depósito</div>
+    <div class="bono-desc">Depositás $5.000 → jugás con $10.000</div>
+    <div class="bono-cta-hint">👆 Tocá aquí para reclamarlo</div>
   </div>
 
   <!-- BENEFICIOS -->
@@ -269,7 +300,7 @@
       <div class="paso-num">3</div>
       <div class="paso-texto">
         <strong>Cargás fichas y jugás</strong>
-        <span>Con tu bono de $5.000 activado</span>
+        <span>Con tu bono del 100% activado</span>
       </div>
     </div>
   </div>
@@ -279,10 +310,11 @@
   </div>
 
   <!-- ════════════════════════════════════════ -->
-  <!-- SCRIPT PRINCIPAL -->
+  <!-- SCRIPT PRINCIPAL                         -->
   <!-- ════════════════════════════════════════ -->
   <script>
-    // ── Genera un REF único y lo guarda en sessionStorage ──
+
+    // ── Genera REF único ──
     function generarREF() {
       let ref = sessionStorage.getItem('casino_ref');
       if (!ref) {
@@ -298,7 +330,7 @@
       return match ? match[2] : null;
     }
 
-    // ── Guarda fbp y fbc en sessionStorage para usarlos en confirmar-venta ──
+    // ── Guarda fbp y fbc en sessionStorage ──
     function guardarCookiesMeta() {
       const fbp = getCookie('_fbp');
       const fbc = getCookie('_fbc');
@@ -335,43 +367,43 @@
             body: JSON.stringify(payload)
           }
         );
-        console.log('✅ Evento Lead enviado - REF:', ref);
+        console.log('✅ Lead enviado — REF:', ref);
       } catch (e) {
         console.warn('⚠️ Error enviando Lead:', e);
       }
     }
 
-    // ── Función principal al hacer clic en WhatsApp ──
+    // ════════════════════════════════════════
+    // FUNCIÓN PRINCIPAL — usada por AMBOS
+    // clics (bono-box Y btn-whatsapp)
+    // ════════════════════════════════════════
     function irAWhatsapp(e) {
       e.preventDefault();
 
       guardarCookiesMeta();
       const ref = generarREF();
 
-      // También disparar pixel Lead desde browser
+      // Pixel browser (deduplicado con CAPI)
       fbq('track', 'Lead', {}, { eventID: ref });
 
-      // Enviar Lead por CAPI
+      // CAPI en paralelo
       enviarEventoLead(ref);
 
-      // Mensaje con REF incluido
       const mensaje = encodeURIComponent(
         `Hola! Quiero reclamar mi bono de bienvenida 🎰\nREF: ${ref}`
       );
 
-      const url = `https://wa.me/${WHATSAPP_NUM}?text=${mensaje}`;
-
-      // Pequeño delay para que el evento se envíe
       setTimeout(() => {
-        window.open(url, '_blank');
-      }, 300);
+        window.open(`https://wa.me/${WHATSAPP_NUM}?text=${mensaje}`, '_blank');
+      }, 400);
     }
 
-    // ── Al cargar la página guardamos las cookies ──
+    // ── Al cargar la página ──
     window.addEventListener('load', () => {
       guardarCookiesMeta();
       generarREF();
     });
+
   </script>
 
 </body>
