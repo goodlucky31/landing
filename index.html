@@ -370,8 +370,8 @@
         `Hola! Quiero reclamar mi bono de bienvenida 🎰\nREF: ${ref}`
       );
 
-      // Redirección directa usando api.whatsapp.com sin setTimeout ni pestañas nuevas
-      window.location.href = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUM}&text=${mensaje}`;
+      // Redirección directa usando wa.me (funciona perfecto en móviles y apps)
+      window.location.href = `https://wa.me/${WHATSAPP_NUM}?text=${mensaje}`;
     }
 
     document.addEventListener('DOMContentLoaded', () => {
