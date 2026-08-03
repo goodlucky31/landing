@@ -41,6 +41,7 @@
       background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
       min-height: 100vh;
       color: white;
+      padding-bottom: 90px;
     }
 
     .header {
@@ -52,7 +53,7 @@
     .header-logo { font-size: 22px; font-weight: bold; color: #FFD700; letter-spacing: 2px; }
     .header-sub  { font-size: 11px; color: #aaa; margin-top: 2px; }
 
-    .hero { text-align: center; padding: 35px 20px 25px; }
+    .hero { text-align: center; padding: 30px 20px 20px; }
     .badge {
       display: inline-block;
       background: rgba(255,215,0,0.15);
@@ -60,14 +61,33 @@
       color: #FFD700;
       font-size: 12px; font-weight: bold;
       padding: 5px 16px; border-radius: 20px;
-      margin-bottom: 16px; letter-spacing: 1px;
+      margin-bottom: 14px; letter-spacing: 1px;
     }
     .hero h1 {
       font-size: 32px; font-weight: 900;
       line-height: 1.2; margin-bottom: 10px;
     }
     .hero h1 span { color: #FFD700; text-shadow: 0 0 20px rgba(255,215,0,0.5); }
-    .hero-sub { font-size: 16px; color: #ccc; margin-bottom: 20px; }
+    .hero-sub { font-size: 16px; color: #ccc; margin-bottom: 15px; }
+
+    /* CONTADOR REGRESIVO */
+    .timer-container {
+      background: rgba(255, 165, 0, 0.1);
+      border: 1px dashed #FFA500;
+      border-radius: 10px;
+      padding: 8px 15px;
+      margin: 0 20px 20px;
+      text-align: center;
+      font-size: 13px;
+      color: #ffd27f;
+    }
+    .timer-container strong { color: #FFD700; font-size: 15px; font-family: monospace; }
+
+    @keyframes pulso {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
 
     .bono-box {
       background: linear-gradient(135deg, #FFD700, #FFA500);
@@ -79,6 +99,7 @@
       cursor: pointer;
       transition: transform 0.15s, box-shadow 0.15s;
       user-select: none;
+      animation: pulso 2s infinite ease-in-out;
     }
     .bono-box:hover {
       transform: translateY(-3px) scale(1.02);
@@ -86,11 +107,11 @@
     }
     .bono-box:active { transform: translateY(0) scale(0.98); }
 
-    .bono-titulo    { color: #1a1a2e; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-    .bono-monto     { color: #1a1a2e; font-size: 68px; font-weight: 900; line-height: 1; margin: 5px 0; }
-    .bono-monto-sub { color: #1a1a2e; font-size: 22px; font-weight: 900; margin-bottom: 4px; }
-    .bono-desc      { color: #3a2000; font-size: 14px; }
-    .bono-cta-hint  { margin-top: 10px; font-size: 12px; color: #5a3000; font-weight: bold; letter-spacing: 0.5px; }
+    .bono-titulo     { color: #1a1a2e; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+    .bono-monto      { color: #1a1a2e; font-size: 68px; font-weight: 900; line-height: 1; margin: 5px 0; }
+    .bono-monto-sub  { color: #1a1a2e; font-size: 22px; font-weight: 900; margin-bottom: 4px; }
+    .bono-desc       { color: #3a2000; font-size: 14px; }
+    .bono-cta-hint   { margin-top: 10px; font-size: 12px; color: #5a3000; font-weight: bold; letter-spacing: 0.5px; }
 
     .beneficios { padding: 0 20px 20px; }
     .beneficio-item {
@@ -121,10 +142,61 @@
       border-radius: 14px; font-size: 20px; font-weight: 900;
       box-shadow: 0 6px 24px rgba(37,211,102,0.4);
       transition: all 0.2s; cursor: pointer; border: none;
+      animation: pulso 2s infinite ease-in-out;
     }
     .btn-whatsapp:hover  { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(37,211,102,0.5); }
     .btn-whatsapp:active { transform: translateY(0); }
-    .btn-sub { text-align: center; font-size: 12px; color: #888; margin-top: 8px; }
+    .btn-sub { text-align: center; font-size: 12px; color: #25D366; margin-top: 8px; font-weight: bold; }
+
+    /* BARRA FLOTANTE FIJA ABAJO */
+    .floating-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(15, 15, 26, 0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,215,0,0.2);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      z-index: 999;
+    }
+    .floating-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; max-width: 420px; padding: 14px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white; text-decoration: none;
+      border-radius: 12px; font-size: 16px; font-weight: 900;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.4);
+      cursor: pointer; border: none;
+    }
+
+    /* NOTIFICACIÓN FLOTANTE DE PRUEBA SOCIAL EN VIVO */
+    .live-toast {
+      position: fixed;
+      top: 75px;
+      left: 15px;
+      background: rgba(20, 20, 35, 0.95);
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      border-left: 4px solid #FFD700;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      color: white;
+      z-index: 998;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.4s ease;
+      pointer-events: none;
+      max-width: 280px;
+    }
+    .live-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .live-toast span { color: #FFD700; font-weight: bold; }
 
     .social-proof { padding: 15px 20px; text-align: center; }
     .avatares { display: flex; justify-content: center; margin-bottom: 8px; }
@@ -158,6 +230,11 @@
 </head>
 <body>
 
+  <!-- NOTIFICACIÓN FLOTANTE DINÁMICA -->
+  <div id="liveToast" class="live-toast">
+    ⚡ <span id="toastUser">Lucas M.</span> acabo de reclamar su bono de <span id="toastMonto">$6.000</span> hace un momento.
+  </div>
+
   <!-- HEADER -->
   <div class="header">
     <div class="header-logo">🎰 CASINO VIP</div>
@@ -169,6 +246,11 @@
     <div class="badge">🔥 OFERTA LIMITADA</div>
     <h1>Conseguí tu<br><span>Bono de Bienvenida</span></h1>
     <p class="hero-sub">Depositá hoy y te duplicamos el saldo</p>
+  </div>
+
+  <!-- CONTADOR REGRESIVO -->
+  <div class="timer-container">
+    ⏱️ Tu reserva expira en: <strong id="countdown">10:00</strong>
   </div>
 
   <!-- BONO BOX -->
@@ -241,7 +323,7 @@
       </svg>
       QUIERO MI BONO
     </button>
-    <div class="btn-sub">✅ Gratis · Sin tarjeta · Respuesta inmediata</div>
+    <div class="btn-sub">💬 Atención por WhatsApp en menos de 2 minutos</div>
   </div>
 
   <!-- SOCIAL PROOF -->
@@ -265,7 +347,7 @@
       <div class="paso-num">1</div>
       <div class="paso-texto">
         <strong>Escribinos por WhatsApp</strong>
-        <span>Hacé clic en el botón verde</span>
+        <span>Hacé clic en cualquier botón verde o dorado</span>
       </div>
     </div>
     <div class="paso">
@@ -282,6 +364,17 @@
         <span>Con tu bono del 100% activado</span>
       </div>
     </div>
+  </div>
+
+  <!-- BARRA FLOTANTE -->
+  <div class="floating-bar">
+    <button id="btnFloating" class="floating-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.528 5.855L0 24l6.335-1.505A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.36-.214-3.724.885.916-3.619-.235-.372A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 12 17.42 17.42 21.818 12 21.818z"/>
+      </svg>
+      RECLAMAR MI BONO
+    </button>
   </div>
 
   <div class="footer">
@@ -358,28 +451,75 @@
       guardarCookiesMeta();
       const ref = generarREF();
 
-      // Pixel browser (deduplicado con CAPI)
       if (typeof fbq === 'function') {
         fbq('track', 'Lead', {}, { eventID: ref });
       }
 
-      // CAPI en paralelo
       enviarEventoLead(ref);
 
       const mensaje = encodeURIComponent(
         `Hola! Quiero reclamar mi bono de bienvenida 🎰\nREF: ${ref}`
       );
 
-      // Redirección directa usando wa.me (funciona perfecto en móviles y apps)
-      window.location.href = `https://wa.me/${WHATSAPP_NUM}?text=${mensaje}`;
+      window.location.href = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUM}&text=${mensaje}`;
+    }
+
+    // CONTADOR REGRESIVO (10 minutos)
+    function iniciarContador() {
+      let tiempoRestante = sessionStorage.getItem('tiempo_oferta');
+      if (!tiempoRestante) {
+        tiempoRestante = 600; // 10 minutos en segundos
+      } else {
+        tiempoRestante = parseInt(tiempoRestante);
+      }
+
+      const display = document.getElementById('countdown');
+      
+      const intervalo = setInterval(() => {
+        if (tiempoRestante <= 0) {
+          tiempoRestante = 600;
+        }
+        tiempoRestante--;
+        sessionStorage.setItem('tiempo_oferta', tiempoRestante);
+
+        let minutos = Math.floor(tiempoRestante / 60);
+        let segundos = tiempoRestante % 60;
+
+        display.textContent = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+      }, 1000);
+    }
+
+    // NOTIFICACIONES FLOTANTES ROTATIVAS DE PRUEBA SOCIAL
+    function iniciarToastSocial() {
+      const nombres = ["Lucas M.", "Mariana R.", "Esteban G.", "Florencia P.", "Martín L.", "Romina S."];
+      const montos = ["$6.000", "$10.000", "$4.500", "$12.000", "$8.000"];
+      const toast = document.getElementById('liveToast');
+      const txtUser = document.getElementById('toastUser');
+      const txtMonto = document.getElementById('toastMonto');
+
+      setInterval(() => {
+        const randomNombre = nombres[Math.floor(Math.random() * nombres.length)];
+        const randomMonto = montos[Math.floor(Math.random() * montos.length)];
+        
+        txtUser.textContent = randomNombre;
+        txtMonto.textContent = randomMonto;
+
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 4000);
+      }, 12000);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       guardarCookiesMeta();
       generarREF();
+      iniciarContador();
+      setTimeout(iniciarToastSocial, 3000);
 
       const bonoBox     = document.getElementById('bonoBox');
       const btnWhatsapp = document.getElementById('btnWhatsapp');
+      const btnFloating = document.getElementById('btnFloating');
 
       btnWhatsapp.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -389,6 +529,13 @@
       bonoBox.addEventListener('click', () => {
         irAWhatsapp();
       });
+
+      if (btnFloating) {
+        btnFloating.addEventListener('click', (e) => {
+          e.stopPropagation();
+          irAWhatsapp();
+        });
+      }
     });
   </script>
 
