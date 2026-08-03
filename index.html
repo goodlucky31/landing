@@ -288,14 +288,10 @@
     © 2025 Casino VIP · Jugá con responsabilidad · +18
   </div>
 
-  <!-- ════════════════════════════════════════ -->
-  <!-- SCRIPT DE SEGUIMIENTO Y CAPI (LANDING)   -->
-  <!-- ════════════════════════════════════════ -->
+  <!-- SCRIPT PRINCIPAL -->
   <script>
-
     let yaRedirigido = false;
 
-    // Genera REF único corto
     function generarREF() {
       let ref = sessionStorage.getItem('casino_ref');
       if (!ref) {
@@ -306,13 +302,11 @@
       return ref;
     }
 
-    // Lee cookie por nombre
     function getCookie(name) {
       const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
       return match ? match[2] : null;
     }
 
-    // Guarda fbp y fbc en sessionStorage
     function guardarCookiesMeta() {
       const fbp = getCookie('_fbp');
       const fbc = getCookie('_fbc');
@@ -320,7 +314,6 @@
       if (fbc) sessionStorage.setItem('casino_fbc', fbc);
     }
 
-    // Envía evento Lead (Cliente potencial) a Meta CAPI con alta prioridad
     function enviarEventoLead(ref) {
       const fbp = sessionStorage.getItem('casino_fbp') || getCookie('_fbp') || '';
       const fbc = sessionStorage.getItem('casino_fbc') || getCookie('_fbc') || '';
@@ -353,13 +346,11 @@
             keepalive: true
           });
         }
-        console.log('✅ Lead enviado — REF:', ref);
       } catch (e) {
         console.warn('⚠️ Error enviando Lead:', e);
       }
     }
 
-    // Función principal de redirección directa a WhatsApp
     function irAWhatsapp() {
       if (yaRedirigido) return;
       yaRedirigido = true;
@@ -367,23 +358,22 @@
       guardarCookiesMeta();
       const ref = generarREF();
 
-      // Pixel browser (Lead)
+      // Pixel browser (deduplicado con CAPI)
       if (typeof fbq === 'function') {
         fbq('track', 'Lead', {}, { eventID: ref });
       }
 
-      // CAPI en paralelo (Lead)
+      // CAPI en paralelo
       enviarEventoLead(ref);
 
       const mensaje = encodeURIComponent(
         `Hola! Quiero reclamar mi bono de bienvenida 🎰\nREF: ${ref}`
       );
 
-      // Redirección inmediata limpia en la misma pestaña hacia WhatsApp
-      window.location.href = `https://wa.me/${WHATSAPP_NUM}?text=${mensaje}`;
+      // Redirección directa usando api.whatsapp.com sin setTimeout ni pestañas nuevas
+      window.location.href = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUM}&text=${mensaje}`;
     }
 
-    // Eventos
     document.addEventListener('DOMContentLoaded', () => {
       guardarCookiesMeta();
       generarREF();
@@ -400,7 +390,6 @@
         irAWhatsapp();
       });
     });
-
   </script>
 
 </body>
