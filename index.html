@@ -10,7 +10,7 @@
     // CONFIGURACIÓN — EDITÁ SOLO AQUÍ
     // ════════════════════════════════════════
     const PIXEL_ID     = '2141536543066953';
-    const ACCESS_TOKEN = 'EAAcLCVnJCDoBSPjyWBxfPlWC3usGeGtAZAljMREw814dqDsfre5M7ZAm0WC1o5wnUozauYe18juQz0R0hrqE5r9YYenipcXZCgZCG8yByRNAe0TVotbZCpCLjzVbKgcFl19QPNdmalU0Ls72HBfuleE4XSDKXAzcHnIU9koSdTJ1ZA5fwYt1M0AKZBblOaqu1tw0wZDZD;
+    const ACCESS_TOKEN = 'EAAcLCVnJCDoBSPjyWBxfPlWC3usGeGtAZAljMREw814dqDsfre5M7ZAm0WC1o5wnUozauYe18juQz0R0hrqE5r9YYenipcXZCgZCG8yByRNAe0TVotbZCpCLjzVbKgcFl19QPNdmalU0Ls72HBfuleE4XSDKXAzcHnIU9koSdTJ1ZA5fwYt1M0AKZBblOaqu1tw0wZDZD';
     const WHATSAPP_NUM = '5492236796945';
     const EVENT_URL    = 'https://goodlucky31.github.io/landing/';
   </script>
@@ -71,7 +71,7 @@
     .hero h1 span { color: #FFD700; text-shadow: 0 0 20px rgba(255,215,0,0.5); }
     .hero-sub { font-size: 16px; color: #ccc; margin-bottom: 20px; }
 
-    /* ── BONO BOX — ahora es clickeable ── */
+    /* ── BONO BOX ── */
     .bono-box {
       background: linear-gradient(135deg, #FFD700, #FFA500);
       border-radius: 16px;
@@ -79,8 +79,6 @@
       margin: 0 20px 25px;
       text-align: center;
       box-shadow: 0 8px 32px rgba(255,215,0,0.3);
-
-      /* 👇 Hace que se vea clickeable */
       cursor: pointer;
       transition: transform 0.15s, box-shadow 0.15s;
       user-select: none;
@@ -89,21 +87,13 @@
       transform: translateY(-3px) scale(1.02);
       box-shadow: 0 14px 40px rgba(255,215,0,0.5);
     }
-    .bono-box:active {
-      transform: translateY(0) scale(0.98);
-    }
+    .bono-box:active { transform: translateY(0) scale(0.98); }
 
-    .bono-titulo  { color: #1a1a2e; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-    .bono-monto   { color: #1a1a2e; font-size: 68px; font-weight: 900; line-height: 1; margin: 5px 0; }
+    .bono-titulo    { color: #1a1a2e; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+    .bono-monto     { color: #1a1a2e; font-size: 68px; font-weight: 900; line-height: 1; margin: 5px 0; }
     .bono-monto-sub { color: #1a1a2e; font-size: 22px; font-weight: 900; margin-bottom: 4px; }
-    .bono-desc    { color: #3a2000; font-size: 14px; }
-    .bono-cta-hint {
-      margin-top: 10px;
-      font-size: 12px;
-      color: #5a3000;
-      font-weight: bold;
-      letter-spacing: 0.5px;
-    }
+    .bono-desc      { color: #3a2000; font-size: 14px; }
+    .bono-cta-hint  { margin-top: 10px; font-size: 12px; color: #5a3000; font-weight: bold; letter-spacing: 0.5px; }
 
     /* ── BENEFICIOS ── */
     .beneficios { padding: 0 20px 20px; }
@@ -190,9 +180,7 @@
     <p class="hero-sub">Depositá hoy y te duplicamos el saldo</p>
   </div>
 
-  <!-- ══════════════════════════════════════ -->
-  <!-- BONO BOX — clickeable igual que botón -->
-  <!-- ══════════════════════════════════════ -->
+  <!-- BONO BOX -->
   <div class="bono-box" onclick="irAWhatsapp(event)">
     <div class="bono-titulo">💰 Bono de bienvenida</div>
     <div class="bono-monto">100%</div>
