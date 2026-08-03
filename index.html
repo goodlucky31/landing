@@ -1,9 +1,16 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="theme-color" content="#0f0f1a">
   <title>🎰 Conseguí tu Bono de Bienvenida</title>
+
+  <!-- ⚡ PRE-CONEXIONES para acelerar recursos externos -->
+  <link rel="preconnect" href="https://connect.facebook.net">
+  <link rel="dns-prefetch" href="https://connect.facebook.net">
+  <link rel="dns-prefetch" href="https://graph.facebook.com">
+  <link rel="dns-prefetch" href="https://wa.me">
 
   <script>
     // ════════════════════════════════════════
@@ -15,7 +22,7 @@
     const EVENT_URL    = 'https://goodlucky31.github.io/landing/';
   </script>
 
-  <!-- META PIXEL -->
+  <!-- META PIXEL — carga sin bloquear render -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -34,134 +41,135 @@
   </noscript>
 
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ── RESET MÍNIMO ── */
+    *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 
-    body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
-      min-height: 100vh;
-      color: white;
+    body{
+      font-family:Arial,sans-serif;
+      background:linear-gradient(135deg,#0f0f1a 0%,#1a1a2e 50%,#16213e 100%);
+      min-height:100vh;
+      color:#fff;
+      /* ⚡ Mejora scroll en iOS */
+      -webkit-overflow-scrolling:touch;
     }
 
     /* ── HEADER ── */
-    .header {
-      background: linear-gradient(90deg, #1a1a2e, #0d0d1a);
-      border-bottom: 2px solid #FFD700;
-      padding: 12px 20px;
-      text-align: center;
+    .header{
+      background:linear-gradient(90deg,#1a1a2e,#0d0d1a);
+      border-bottom:2px solid #FFD700;
+      padding:12px 20px;
+      text-align:center;
     }
-    .header-logo { font-size: 22px; font-weight: bold; color: #FFD700; letter-spacing: 2px; }
-    .header-sub  { font-size: 11px; color: #aaa; margin-top: 2px; }
+    .header-logo{font-size:22px;font-weight:700;color:#FFD700;letter-spacing:2px}
+    .header-sub{font-size:11px;color:#aaa;margin-top:2px}
 
     /* ── HERO ── */
-    .hero { text-align: center; padding: 35px 20px 25px; }
-    .badge {
-      display: inline-block;
-      background: rgba(255,215,0,0.15);
-      border: 1px solid #FFD700;
-      color: #FFD700;
-      font-size: 12px; font-weight: bold;
-      padding: 5px 16px; border-radius: 20px;
-      margin-bottom: 16px; letter-spacing: 1px;
+    .hero{text-align:center;padding:35px 20px 25px}
+    .badge{
+      display:inline-block;
+      background:rgba(255,215,0,.15);
+      border:1px solid #FFD700;
+      color:#FFD700;
+      font-size:12px;font-weight:700;
+      padding:5px 16px;border-radius:20px;
+      margin-bottom:16px;letter-spacing:1px;
     }
-    .hero h1 {
-      font-size: 32px; font-weight: 900;
-      line-height: 1.2; margin-bottom: 10px;
-    }
-    .hero h1 span { color: #FFD700; text-shadow: 0 0 20px rgba(255,215,0,0.5); }
-    .hero-sub { font-size: 16px; color: #ccc; margin-bottom: 20px; }
+    .hero h1{font-size:32px;font-weight:900;line-height:1.2;margin-bottom:10px}
+    .hero h1 span{color:#FFD700;text-shadow:0 0 20px rgba(255,215,0,.5)}
+    .hero-sub{font-size:16px;color:#ccc;margin-bottom:20px}
 
     /* ── BONO BOX ── */
-    .bono-box {
-      background: linear-gradient(135deg, #FFD700, #FFA500);
-      border-radius: 16px;
-      padding: 20px;
-      margin: 0 20px 25px;
-      text-align: center;
-      box-shadow: 0 8px 32px rgba(255,215,0,0.3);
-      cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
-      user-select: none;
+    .bono-box{
+      background:linear-gradient(135deg,#FFD700,#FFA500);
+      border-radius:16px;padding:20px;
+      margin:0 20px 25px;text-align:center;
+      box-shadow:0 8px 32px rgba(255,215,0,.3);
+      cursor:pointer;
+      /* ⚡ GPU acceleration para animaciones */
+      will-change:transform;
+      transition:transform .15s,box-shadow .15s;
+      user-select:none;
+      /* ⚡ Área táctil cómoda en celular */
+      min-height:44px;
     }
-    .bono-box:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 14px 40px rgba(255,215,0,0.5);
-    }
-    .bono-box:active { transform: translateY(0) scale(0.98); }
-
-    .bono-titulo    { color: #1a1a2e; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-    .bono-monto     { color: #1a1a2e; font-size: 68px; font-weight: 900; line-height: 1; margin: 5px 0; }
-    .bono-monto-sub { color: #1a1a2e; font-size: 22px; font-weight: 900; margin-bottom: 4px; }
-    .bono-desc      { color: #3a2000; font-size: 14px; }
-    .bono-cta-hint  { margin-top: 10px; font-size: 12px; color: #5a3000; font-weight: bold; letter-spacing: 0.5px; }
+    .bono-box:active{transform:scale(.97)}
+    .bono-titulo{color:#1a1a2e;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+    .bono-monto{color:#1a1a2e;font-size:68px;font-weight:900;line-height:1;margin:5px 0}
+    .bono-monto-sub{color:#1a1a2e;font-size:22px;font-weight:900;margin-bottom:4px}
+    .bono-desc{color:#3a2000;font-size:14px}
+    .bono-cta-hint{margin-top:10px;font-size:12px;color:#5a3000;font-weight:700;letter-spacing:.5px}
 
     /* ── BENEFICIOS ── */
-    .beneficios { padding: 0 20px 20px; }
-    .beneficio-item {
-      display: flex; align-items: center; gap: 12px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px; padding: 12px 15px; margin-bottom: 10px;
+    .beneficios{padding:0 20px 20px}
+    .beneficio-item{
+      display:flex;align-items:center;gap:12px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:10px;padding:12px 15px;margin-bottom:10px;
     }
-    .beneficio-icon { font-size: 24px; min-width: 36px; text-align: center; }
-    .beneficio-texto strong { display: block; font-size: 14px; color: #FFD700; }
-    .beneficio-texto span   { font-size: 12px; color: #aaa; }
+    .beneficio-icon{font-size:24px;min-width:36px;text-align:center}
+    .beneficio-texto strong{display:block;font-size:14px;color:#FFD700}
+    .beneficio-texto span{font-size:12px;color:#aaa}
 
     /* ── URGENCIA ── */
-    .urgencia {
-      background: rgba(255,82,82,0.1);
-      border: 1px solid rgba(255,82,82,0.3);
-      border-radius: 10px; padding: 12px 15px;
-      margin: 0 20px 20px; text-align: center;
-      font-size: 13px; color: #ff8a80;
+    .urgencia{
+      background:rgba(255,82,82,.1);
+      border:1px solid rgba(255,82,82,.3);
+      border-radius:10px;padding:12px 15px;
+      margin:0 20px 20px;text-align:center;
+      font-size:13px;color:#ff8a80;
     }
-    .urgencia strong { color: #ff5252; }
+    .urgencia strong{color:#ff5252}
 
     /* ── BOTÓN WHATSAPP ── */
-    .cta-section { padding: 0 20px 15px; }
-    .btn-whatsapp {
-      display: flex; align-items: center; justify-content: center; gap: 12px;
-      width: 100%; padding: 18px;
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      color: white; text-decoration: none;
-      border-radius: 14px; font-size: 20px; font-weight: 900;
-      box-shadow: 0 6px 24px rgba(37,211,102,0.4);
-      transition: all 0.2s; cursor: pointer; border: none;
+    .cta-section{padding:0 20px 15px}
+    .btn-whatsapp{
+      display:flex;align-items:center;justify-content:center;gap:12px;
+      width:100%;padding:18px;
+      background:linear-gradient(135deg,#25D366,#128C7E);
+      color:#fff;text-decoration:none;
+      border-radius:14px;font-size:20px;font-weight:900;
+      box-shadow:0 6px 24px rgba(37,211,102,.4);
+      /* ⚡ GPU para botón principal */
+      will-change:transform;
+      transition:transform .15s;
+      cursor:pointer;border:none;
+      /* ⚡ Área táctil mínima recomendada por Apple/Google */
+      min-height:56px;
     }
-    .btn-whatsapp:hover  { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(37,211,102,0.5); }
-    .btn-whatsapp:active { transform: translateY(0); }
-    .btn-sub { text-align: center; font-size: 12px; color: #888; margin-top: 8px; }
+    .btn-whatsapp:active{transform:scale(.97)}
+    .btn-sub{text-align:center;font-size:12px;color:#888;margin-top:8px}
 
     /* ── SOCIAL PROOF ── */
-    .social-proof { padding: 15px 20px; text-align: center; }
-    .avatares { display: flex; justify-content: center; margin-bottom: 8px; }
-    .avatar {
-      width: 32px; height: 32px; border-radius: 50%;
-      border: 2px solid #1a1a2e; margin-left: -8px;
-      font-size: 18px; display: flex; align-items: center;
-      justify-content: center; background: #333;
+    .social-proof{padding:15px 20px;text-align:center}
+    .avatares{display:flex;justify-content:center;margin-bottom:8px}
+    .avatar{
+      width:32px;height:32px;border-radius:50%;
+      border:2px solid #1a1a2e;margin-left:-8px;
+      font-size:18px;display:flex;align-items:center;
+      justify-content:center;background:#333;
     }
-    .social-texto { font-size: 13px; color: #aaa; }
-    .social-texto strong { color: #FFD700; }
+    .social-texto{font-size:13px;color:#aaa}
+    .social-texto strong{color:#FFD700}
 
     /* ── PASOS ── */
-    .pasos { padding: 20px; }
-    .pasos-titulo { text-align: center; font-size: 16px; font-weight: bold; color: #FFD700; margin-bottom: 15px; }
-    .paso { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
-    .paso-num {
-      min-width: 30px; height: 30px; background: #FFD700;
-      color: #1a1a2e; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 900; font-size: 14px;
+    .pasos{padding:20px}
+    .pasos-titulo{text-align:center;font-size:16px;font-weight:700;color:#FFD700;margin-bottom:15px}
+    .paso{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+    .paso-num{
+      min-width:30px;height:30px;background:#FFD700;
+      color:#1a1a2e;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-weight:900;font-size:14px;
     }
-    .paso-texto strong { display: block; font-size: 14px; color: white; }
-    .paso-texto span   { font-size: 12px; color: #888; }
+    .paso-texto strong{display:block;font-size:14px;color:#fff}
+    .paso-texto span{font-size:12px;color:#888}
 
     /* ── FOOTER ── */
-    .footer {
-      text-align: center; padding: 20px;
-      font-size: 11px; color: #555;
-      border-top: 1px solid #222;
+    .footer{
+      text-align:center;padding:20px;
+      font-size:11px;color:#555;
+      border-top:1px solid #222;
     }
   </style>
 </head>
@@ -230,7 +238,7 @@
   <!-- BOTÓN WHATSAPP -->
   <div class="cta-section">
     <a id="btnWhatsapp" class="btn-whatsapp" href="#" onclick="irAWhatsapp(event)">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15
                  -.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075
                  -.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059
@@ -297,16 +305,13 @@
     © 2025 Casino VIP · Jugá con responsabilidad · +18
   </div>
 
-  <!-- ════════════════════════════════════════ -->
-  <!-- SCRIPT PRINCIPAL                         -->
-  <!-- ════════════════════════════════════════ -->
   <script>
 
     // ── Genera REF único ──
     function generarREF() {
       let ref = sessionStorage.getItem('casino_ref');
       if (!ref) {
-        ref = 'REF-' + Date.now() + '-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+        ref = 'REF-' + Date.now() + '-' + Math.random().toString(36).substr(2,6).toUpperCase();
         sessionStorage.setItem('casino_ref', ref);
       }
       return ref;
@@ -326,7 +331,7 @@
       if (fbc) sessionStorage.setItem('casino_fbc', fbc);
     }
 
-    // ── Envía evento Lead a Meta CAPI ──
+    // ── Envía Lead por CAPI ──
     async function enviarEventoLead(ref) {
       const fbp = sessionStorage.getItem('casino_fbp') || getCookie('_fbp') || '';
       const fbc = sessionStorage.getItem('casino_fbc') || getCookie('_fbc') || '';
@@ -351,48 +356,45 @@
           `https://graph.facebook.com/v19.0/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`,
           {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(payload)
           }
         );
-        console.log('✅ Lead enviado — REF:', ref);
-      } catch (e) {
-        console.warn('⚠️ Error enviando Lead:', e);
+        console.log('✅ Lead CAPI enviado — REF:', ref);
+      } catch(e) {
+        console.warn('⚠️ Error CAPI:', e);
       }
     }
 
-    // ════════════════════════════════════════
-    // FUNCIÓN PRINCIPAL — usada por AMBOS
-    // clics (bono-box Y btn-whatsapp)
-    // ════════════════════════════════════════
+    // ── Función principal ──
     function irAWhatsapp(e) {
       e.preventDefault();
 
       guardarCookiesMeta();
       const ref = generarREF();
 
-      // Pixel browser (deduplicado con CAPI)
+      // Pixel browser
       fbq('track', 'Lead', {}, { eventID: ref });
 
-      // CAPI en paralelo
+      // CAPI en paralelo (no bloquea)
       enviarEventoLead(ref);
 
-      const mensaje = encodeURIComponent(
+      const msg = encodeURIComponent(
         `Hola! Quiero reclamar mi bono de bienvenida 🎰\nREF: ${ref}`
       );
 
+      // ⚡ 150ms — suficiente para fbq, sin bloquear el popup
       setTimeout(() => {
-        window.open(`https://wa.me/${WHATSAPP_NUM}?text=${mensaje}`, '_blank');
-      }, 400);
+        window.location.href = `https://wa.me/${WHATSAPP_NUM}?text=${msg}`;
+      }, 150);
     }
 
-    // ── Al cargar la página ──
+    // ── Init ──
     window.addEventListener('load', () => {
       guardarCookiesMeta();
       generarREF();
     });
 
   </script>
-
 </body>
 </html>
