@@ -296,11 +296,13 @@
     // ── Flag anti-doble-disparo ──
     let yaRedirigido = false;
 
-    // ── Genera REF único ──
+    // ── Genera REF único CORTO (Ejemplo: REF-849201) ──
     function generarREF() {
       let ref = sessionStorage.getItem('casino_ref');
       if (!ref) {
-        ref = 'REF-' + Date.now() + '-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+        // Genera 6 dígitos aleatorios entre 100000 y 999999
+        const numeroCorto = Math.floor(100000 + Math.random() * 900000);
+        ref = 'REF-' + numeroCorto;
         sessionStorage.setItem('casino_ref', ref);
       }
       return ref;
