@@ -10,9 +10,7 @@
     // CONFIGURACIÓN — EDITÁ SOLO AQUÍ
     // ════════════════════════════════════════
     const PIXEL_ID     = '2141536543066953';
-    const ACCESS_TOKEN = 'EAAcLCVnJCDoBSPAZBVjvVGxtaltZCF8W4cnwWhtmDApHEecR0J7KhmG0x5xT8mLqFPqTZCfQF5I1pRSQ8keLsJOExuh1srOGQm9tw3v9tTkRcEacih96DcbsTDEypZCQ5dgZAjfPoAlXFE2Xt6QQp9V9NVN5yKMsKh3KelSE27X4zdxdyHnncMeu1ntiPpylElAZDZD';
     const WHATSAPP_NUM = '5492236796949';
-    const EVENT_URL    = 'https://goodlucky31.github.io/landing/';
   </script>
 
   <!-- META PIXEL -->
@@ -381,7 +379,7 @@
     © 2025 Casino VIP · Jugá con responsabilidad · +18
   </div>
 
-  <!-- SCRIPT PRINCIPAL -->
+  <!-- SCRIPT PRINCIPAL OPTIMIZADO -->
   <script>
     let yaRedirigido = false;
 
@@ -395,72 +393,22 @@
       return ref;
     }
 
-    function getCookie(name) {
-      const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-      return match ? match[2] : null;
-    }
-
-    function guardarCookiesMeta() {
-      const fbp = getCookie('_fbp');
-      const fbc = getCookie('_fbc');
-      if (fbp) sessionStorage.setItem('casino_fbp', fbp);
-      if (fbc) sessionStorage.setItem('casino_fbc', fbc);
-    }
-
-    function enviarEventoLead(ref) {
-      const fbp = sessionStorage.getItem('casino_fbp') || getCookie('_fbp') || '';
-      const fbc = sessionStorage.getItem('casino_fbc') || getCookie('_fbc') || '';
-
-      const payload = {
-        data: [{
-          event_name: 'Lead',
-          event_time: Math.floor(Date.now() / 1000),
-          event_source_url: EVENT_URL,
-          action_source: 'website',
-          event_id: ref,
-          user_data: {
-            fbp: fbp,
-            fbc: fbc,
-            client_user_agent: navigator.userAgent
-          }
-        }]
-      };
-
-      const url = `https://graph.facebook.com/v19.0/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`;
-      
-      try {
-        if (navigator.sendBeacon) {
-          navigator.sendBeacon(url, JSON.stringify(payload));
-        } else {
-          fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-            keepalive: true
-          });
-        }
-      } catch (e) {
-        console.warn('⚠️ Error enviando Lead:', e);
-      }
-    }
-
     function irAWhatsapp() {
       if (yaRedirigido) return;
       yaRedirigido = true;
 
-      guardarCookiesMeta();
       const ref = generarREF();
 
+      // Disparar evento de Pixel oficial a Meta al instante
       if (typeof fbq === 'function') {
         fbq('track', 'Lead', {}, { eventID: ref });
       }
-
-      enviarEventoLead(ref);
 
       const mensaje = encodeURIComponent(
         `Hola! Quiero mas informacion \nREF: ${ref}`
       );
 
+      // Redirección directa sin bloqueos ni delays de red
       window.location.href = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUM}&text=${mensaje}`;
     }
 
@@ -512,7 +460,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      guardarCookiesMeta();
       generarREF();
       iniciarContador();
       setTimeout(iniciarToastSocial, 3000);
